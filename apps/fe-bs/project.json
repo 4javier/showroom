@@ -1,0 +1,110 @@
+{
+  "name": "fe-bs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/fe-bs/src",
+  "prefix": "showroom",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/fe-bs",
+        "index": "apps/fe-bs/src/index.html",
+        "main": "apps/fe-bs/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/fe-bs/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/fe-bs/src/favicon.ico", "apps/fe-bs/src/assets"],
+        "styles": ["apps/fe-bs/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/fe-bs/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/fe-bs/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "fe-bs:build:production"
+        },
+        "development": {
+          "browserTarget": "fe-bs:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "fe-bs:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/fe-bs/**/*.ts", "apps/fe-bs/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/fe-bs/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "fe-bs:build",
+        "port": 4202
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "fe-bs:build:development"
+        },
+        "production": {
+          "buildTarget": "fe-bs:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

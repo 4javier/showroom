@@ -1,0 +1,110 @@
+{
+  "name": "fe-mat",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/fe-mat/src",
+  "prefix": "showroom",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/fe-mat",
+        "index": "apps/fe-mat/src/index.html",
+        "main": "apps/fe-mat/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/fe-mat/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/fe-mat/src/favicon.ico", "apps/fe-mat/src/assets"],
+        "styles": ["apps/fe-mat/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/fe-mat/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/fe-mat/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "fe-mat:build:production"
+        },
+        "development": {
+          "browserTarget": "fe-mat:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "fe-mat:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/fe-mat/**/*.ts", "apps/fe-mat/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/fe-mat/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "fe-mat:build",
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "fe-mat:build:development"
+        },
+        "production": {
+          "buildTarget": "fe-mat:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
