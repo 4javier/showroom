@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NxWelcomeComponent } from './nx-welcome.component';
-
+import { NavListComponent } from './nav-list/nav-list.component';
+import { RouterModule } from '@angular/router';
 @Component({
   standalone: true,
-  imports: [CommonModule, NxWelcomeComponent],
+  imports: [CommonModule, RouterModule, NavListComponent],
   selector: 'showroom-fe-mat-entry',
-  template: `<showroom-nx-welcome></showroom-nx-welcome>`,
+  templateUrl: 'remote-entry.component.html',
+  styleUrls: ['remote-entry.component.scss']
 })
 export class RemoteEntryComponent {}

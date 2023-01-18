@@ -1,0 +1,9 @@
+:host {
+    flex-basis: 20%;
+}
+
+.list-item-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
