@@ -1,0 +1,32 @@
+:host {
+    display: block;
+    position: relative;
+
+    &:before {
+        content:"";
+        display: inline-block;
+        position: absolute;
+        background: gray;
+        min-height: 100vh;
+        width: 100%;
+        top:0;
+        left:-25%;
+        bottom: 0;
+        transform: skew(20deg, 0deg);
+        z-index: -1;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-bottom: 4rem;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: space-around;
+}
+

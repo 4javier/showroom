@@ -1,6 +1,14 @@
-<ul class="remote-menu">
-  <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="fe-mat">FeMat</a></li>
-  <li><a routerLink="fe-bs">FeBs</a></li>
-</ul>
+<div class="header">
+  <h1>My Showroom</h1>
+  <p>This project aims at being a minimalistic showcase <br>
+      for a stack composed of a GIT monorepo managed by Nx <br>
+      wrapping three Angular micro frontends module federated by Webpack <br>
+      consisting of a shell and two remotes <br>
+      implementing the same structure by Material and Bootstrap styles <br>
+  </p>
+</div>
+<div class="btns-container">
+  <a routerLink="fe-mat">FeMat</a>
+  <a routerLink="fe-bs">FeBs</a>
+</div>
 <router-outlet></router-outlet>
