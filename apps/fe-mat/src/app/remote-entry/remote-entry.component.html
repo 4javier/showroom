@@ -1,4 +1,10 @@
-<div class="main-container">
-    <showroom-nav-list/>
-    <router-outlet></router-outlet>
-</div>
+<mat-drawer-container>
+    <mat-drawer mode="push" opened>
+        <showroom-nav-list/>
+    </mat-drawer>
+    <mat-drawer-content>
+    <div class="router-wrapper">
+        <router-outlet/>
+    </div>
+    </mat-drawer-content>
+</mat-drawer-container>
