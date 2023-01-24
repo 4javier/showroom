@@ -12,7 +12,7 @@ export type LinkListItem = {
 @Component({
   selector: 'showroom-nav-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatListModule, MatIconModule],
+  imports: [CommonModule, RouterModule, MatIconModule, MatListModule],
   templateUrl: './nav-list.component.html',
   styleUrls: ['./nav-list.component.scss'],
 })

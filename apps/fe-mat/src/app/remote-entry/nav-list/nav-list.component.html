@@ -1,24 +1,22 @@
 <mat-nav-list>
    <mat-list-item [activated]="home_link.isActive">
       <div class="list-item-wrapper">
-         <a matListItemTitle [routerLink]="['home']" 
-            routerLinkActive #home_link="routerLinkActive">Home</a>
+         <a matListItemTitle [routerLink]="['home']" routerLinkActive #home_link="routerLinkActive">Home</a>
          <mat-icon>info</mat-icon>
       </div>
    </mat-list-item>
    <mat-list-item [activated]="projects_link.isActive">
       <div class="list-item-wrapper">
-         <a matListItemTitle [routerLink]="['projects']" 
-            routerLinkActive #projects_link="routerLinkActive">My Projects</a>
+         <a matListItemTitle [routerLink]="['projects']" routerLinkActive #projects_link="routerLinkActive">My
+            Projects</a>
          <mat-icon>info</mat-icon>
       </div>
    </mat-list-item>
    <mat-list-item [activated]="articles_link.isActive">
       <div class="list-item-wrapper">
-         <a matListItemTitle [routerLink]="['articles']" 
-            routerLinkActive #articles_link="routerLinkActive">My Articles</a>
+         <a matListItemTitle [routerLink]="['articles']" routerLinkActive #articles_link="routerLinkActive">My
+            Articles</a>
          <mat-icon>info</mat-icon>
       </div>
    </mat-list-item>
 </mat-nav-list>
-  
