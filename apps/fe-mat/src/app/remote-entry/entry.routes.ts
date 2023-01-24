@@ -1,12 +1,14 @@
 import { Route } from '@angular/router';
+import { appRoutes } from '../app.routes';
+import { ArticlesComponent } from './articles/articles.component';
 import { RemoteEntryComponent } from './entry.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { HomeComponent } from './home/home.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 export const remoteRoutes: Route[] = [
-  { path: '', 
+  { 
+    path: '',
     component: RemoteEntryComponent,
-    children: [
-      { path: 'home', component: NxWelcomeComponent },
-    ]
+    children: appRoutes
   }
 ];
