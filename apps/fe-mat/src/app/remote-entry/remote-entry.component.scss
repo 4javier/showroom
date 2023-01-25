@@ -1,8 +1,14 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-@import "@angular/material/prebuilt-themes/purple-green.css";
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
 
 mat-drawer-container {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.router-wrapper {
+  display: flex;
+  min-height: 100%;
+  justify-content: center;
 }
