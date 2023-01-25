@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list'; 
 import { MatIconModule } from '@angular/material/icon'; 
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button'; 
 
 export type LinkListItem = {
   name: string;
@@ -12,7 +13,7 @@ export type LinkListItem = {
 @Component({
   selector: 'showroom-nav-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule, MatListModule],
+  imports: [CommonModule, RouterModule, MatIconModule, MatListModule, MatButtonModule],
   templateUrl: './nav-list.component.html',
   styleUrls: ['./nav-list.component.scss'],
 })

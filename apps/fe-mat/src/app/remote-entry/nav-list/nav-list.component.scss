@@ -1,7 +1,15 @@
 .list-item-wrapper {
     display: flex;
-    align-items: baseline;
     gap: 1rem;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+            
+    }
 }
 
 
