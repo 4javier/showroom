@@ -31,12 +31,12 @@ export class RemoteEntryComponent {
       );
 
       renderer.setAttribute(
-        fontLink, 
+        iconLink, 
         'href', 
         'https://fonts.googleapis.com/icon?family=Material+Icons'
       );
       renderer.setAttribute(
-        fontLink, 
+        iconLink, 
         'rel',
         'stylesheet'
       );
