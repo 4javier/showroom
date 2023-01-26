@@ -1,5 +1,8 @@
 <ul ngbNav [activeId]="route.url | async" class="nav-pills" orientation="vertical">
     <li [ngbNavItem]="link.path" *ngFor="let link of links">
-        <a ngbNavLink [routerLink]="link.path" >{{ link.name }}</a>
+        <a ngbNavLink [routerLink]="link.path" class="d-flex justify-content-between">
+            <span>{{ link.name }}</span>
+            <i class="bi bi-chevron-double-right"></i>
+        </a>
     </li>
 </ul>
