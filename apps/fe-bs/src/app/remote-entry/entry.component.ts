@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, NxWelcomeComponent],
+  imports: [CommonModule ],
   selector: 'showroom-fe-bs-entry',
-  template: `<showroom-nx-welcome></showroom-nx-welcome>`,
+  templateUrl: 'remote-entry.component.html',
+  styleUrls: ['remote-entry.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class RemoteEntryComponent {}
