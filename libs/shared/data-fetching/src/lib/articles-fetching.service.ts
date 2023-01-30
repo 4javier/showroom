@@ -1,9 +1,39 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { retry, catchError, throwError, filter, shareReplay, concatAll, toArray } from 'rxjs';
+
+export interface DevtoSerializedArticle{
+  canonical_url: string;
+  cover_img: string;
+  description: string;
+  title: string;
+  type_of: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesFetchingService {
 
-  constructor() { }
+  DEV_TO_API = 'https://dev.to/api'
+  DEV_TO_USER = 'gianpiero_errigo'
+
+  devtoArticles$;
+
+  constructor(private http: HttpClient) {
+
+    this.devtoArticles$ = http.get<Array<DevtoSerializedArticle>>(
+      `${this.DEV_TO_API}/articles`,
+      {
+        params: new HttpParams({fromObject: {username: this.DEV_TO_USER}}),
+      }
+    ).pipe(
+      retry(5),
+      catchError(() => throwError(() => new Error('An error occurred while fetching repos from Github'))),
+      concatAll(),
+      filter(article => article.type_of === 'article'),
+      toArray(), 
+      shareReplay(1)
+    )
+   }
 }
