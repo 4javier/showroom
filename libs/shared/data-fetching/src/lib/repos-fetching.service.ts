@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { catchError, retry, shareReplay, throwError } from 'rxjs';
+import { catchError, concatAll, filter, map, retry, shareReplay, throwError, toArray } from 'rxjs';
 
 export interface GithubSerializedSearch{
   total_count: number;
-  items: [
-    {
-      name: string;
-      description: string;
-    }
-  ]
+  items: GithubSerializedRepo[]
+}
+
+export interface GithubSerializedRepo {
+  name: string;
+  description: string;
+}
+
+export interface GitlabSerializedRepo{
+  name: string;
+  description: string;
+  topics: string[];
 }
 
 @Injectable({
@@ -22,8 +28,14 @@ export class ReposFetchingService {
   GITHUB_API = 'https://api.github.com';
   GITHUB_USER = '4javier';
   GITHUB_API_VERSION = '2022-11-28';
+
+  GITLAB_API = 'https://gitlab.com/api';
+  GITLAB_USER = 'gianpiero.errigo';
+  GITLAB_API_VERSION = 'v4';
   
   githubProjects$;
+  gitlabProjects$;
+
   constructor(private http: HttpClient) {
 
     this.githubProjects$ = http.get<GithubSerializedSearch>(
@@ -35,6 +47,18 @@ export class ReposFetchingService {
     ).pipe(
       retry(5),
       catchError(() => throwError(() => new Error('An error occurred while fetching repos from Github'))),
+      map(search => search.items),
+      shareReplay(1)
+    )
+
+    this.gitlabProjects$ = http.get<Array<GitlabSerializedRepo>>(
+      `${this.GITLAB_API}/${this.GITLAB_API_VERSION}/users/${this.GITLAB_USER}/projects`
+    ).pipe(
+      retry(5),
+      catchError(() => throwError(() => new Error('An error occurred while fetching repos from Github'))),
+      concatAll(),
+      filter(project => project.topics.includes('ge-showroom')),
+      toArray(),
       shareReplay(1)
     )
   }
