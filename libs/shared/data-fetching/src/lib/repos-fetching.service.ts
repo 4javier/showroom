@@ -55,7 +55,7 @@ export class ReposFetchingService {
       `${this.GITLAB_API}/${this.GITLAB_API_VERSION}/users/${this.GITLAB_USER}/projects`
     ).pipe(
       retry(5),
-      catchError(() => throwError(() => new Error('An error occurred while fetching repos from Github'))),
+      catchError(() => throwError(() => new Error('An error occurred while fetching repos from Gitlab'))),
       concatAll(),
       filter(project => project.topics.includes('ge-showroom')),
       toArray(),

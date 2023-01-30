@@ -29,7 +29,7 @@ export class ArticlesFetchingService {
       }
     ).pipe(
       retry(5),
-      catchError(() => throwError(() => new Error('An error occurred while fetching repos from Github'))),
+      catchError(() => throwError(() => new Error('An error occurred while fetching articles from DevTo'))),
       concatAll(),
       filter(article => article.type_of === 'article'),
       toArray(), 
