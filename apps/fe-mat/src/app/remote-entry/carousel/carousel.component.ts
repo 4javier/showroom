@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card'
-
-export interface SlideData {
-  title: string;
-  image: string;
-  content: string;
-  link: string;
-  origin?: string;
-}
+import { SlideData } from 'libs/shared/data-fetching/src/lib/model';
 
 @Component({
   selector: 'showroom-carousel',

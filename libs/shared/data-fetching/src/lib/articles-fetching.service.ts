@@ -1,14 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { retry, catchError, throwError, filter, shareReplay, concatAll, toArray } from 'rxjs';
-
-export interface DevtoSerializedArticle{
-  canonical_url: string;
-  cover_img: string;
-  description: string;
-  title: string;
-  type_of: string;
-}
+import { DevtoSerializedArticle, SlideData } from './model';
 
 @Injectable({
   providedIn: 'root'

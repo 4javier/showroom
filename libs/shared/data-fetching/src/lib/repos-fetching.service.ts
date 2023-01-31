@@ -1,22 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, concatAll, filter, map, retry, shareReplay, throwError, toArray } from 'rxjs';
-
-export interface GithubSerializedSearch{
-  total_count: number;
-  items: GithubSerializedRepo[]
-}
-
-export interface GithubSerializedRepo {
-  name: string;
-  description: string;
-}
-
-export interface GitlabSerializedRepo{
-  name: string;
-  description: string;
-  topics: string[];
-}
+import { GithubSerializedSearch, GitlabSerializedRepo } from './model';
 
 @Injectable({
   providedIn: 'root'
