@@ -8,10 +8,18 @@ export interface GithubSerializedRepo {
     description: string;
 }
 
+export interface GithubRepoDTO extends GithubSerializedRepo{
+    origin: string;
+}
+
 export interface GitlabSerializedRepo {
     name: string;
     description: string;
     topics: string[];
+}
+
+export interface GitlabRepoDto extends GitlabSerializedRepo{
+    origin: string;
 }
 
 export interface DevtoSerializedArticle {

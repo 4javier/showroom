@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { retry, catchError, throwError, filter, shareReplay, concatAll, toArray } from 'rxjs';
+import { retry, catchError, throwError, filter, shareReplay, concatAll, toArray, map } from 'rxjs';
 import { DevtoSerializedArticle, SlideData } from './model';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class ArticlesFetchingService {
   DEV_TO_USER = 'gianpiero_errigo'
 
   devtoArticles$;
+  devtoArticlesSlide$;
 
   constructor(private http: HttpClient) {
 
@@ -28,5 +29,23 @@ export class ArticlesFetchingService {
       toArray(), 
       shareReplay(1)
     )
+
+    this.devtoArticlesSlide$ = this.devtoArticles$.pipe(
+      concatAll(),
+      map(article => mapDevtoArticleToSlide(article)),
+      toArray()      
+    )
+
    }
+
+}
+
+const mapDevtoArticleToSlide = (article: DevtoSerializedArticle): SlideData => {
+  return {
+    title: article.title,
+    content: article.description,
+    image: article.cover_img,
+    link: article.canonical_url,
+    origin: "devto_logo"
+  }
 }
