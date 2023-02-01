@@ -24,7 +24,7 @@ export interface GitlabRepoDto extends GitlabSerializedRepo{
 
 export interface DevtoSerializedArticle {
     canonical_url: string;
-    cover_img: string;
+    cover_image: string;
     description: string;
     title: string;
     type_of: string;
