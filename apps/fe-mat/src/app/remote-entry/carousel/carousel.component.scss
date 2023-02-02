@@ -1,14 +1,28 @@
-.slider {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+:host {
+  --inner-gap: 5%;
+  --slide-width: 80%;
 }
-  
+
+.slider-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.slider {
+  width: 50vw;
+  overflow: hidden;
+}
+
+.inner {
+  display: flex;  
+  transition: transform 0.3s;
+  justify-content: flex-start;
+  gap: var(--inner-gap);
+}
+
 .slide {
-    width: 300px;
-    flex-shrink: 0;
-    height: 100%;
-    scroll-snap-align: start;
+  flex-shrink: 0;
+  width: var(--slide-width);
 }
