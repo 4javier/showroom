@@ -70,8 +70,8 @@ export class ReposFetchingService {
         link: repo.origin === 'github' ? `${this.GITHUB_HOST}/${this.GITHUB_USER}/${repo.name}` :
               repo.origin === 'gitlab' ? `${this.GITLAB_HOST}/${this.GITLAB_USER}/${repo.name}` : 
               'no_link',
-        origin: repo.origin === 'github' ? 'github_logo' :
-                repo.origin === 'gitlab' ? 'gitlab_logo' :
+        origin: repo.origin === 'github' ? 'assets/github-badge.svg' :
+                repo.origin === 'gitlab' ? 'assets/gitlab-badge.svg' :
                 'no_logo'
       }
     }

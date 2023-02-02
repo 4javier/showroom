@@ -46,6 +46,6 @@ const mapDevtoArticleToSlide = (article: DevtoSerializedArticle): SlideData => {
     content: article.description,
     image: article.cover_image,
     link: article.canonical_url,
-    origin: "devto_logo"
+    origin: "assets/devto-badge.svg"
   }
 }
