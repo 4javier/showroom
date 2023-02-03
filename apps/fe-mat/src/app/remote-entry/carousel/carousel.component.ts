@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card'
 import { SlideData } from 'libs/shared/data-fetching/src/lib/model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { BehaviorSubject, filter, interval, repeat, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'showroom-carousel',
@@ -17,17 +18,25 @@ export class CarouselComponent {
   @Input()
   slides: SlideData[] = [];
   _focusIndex = 0;
-  translation = ''
+  translate = ''
   set focusedIndex(i: number) {
     i === 0 
-      ? this.translation = ''
-      : this.translation = `transform: translateX(-${75+85*(i-1)}%)`
+      ? this.translate = ''
+      : this.translate = `transform: translateX(-${75+85*(i-1)}%)`
     this._focusIndex = i;
   };
   get focusedIndex() {
     return this._focusIndex;
   }
-
+  paused$ = new BehaviorSubject<boolean>(false);
+  ngOnInit() {
+    interval(3000).pipe(
+      take(this.slides.length),
+      takeUntil(this.paused$.pipe(filter(value => !!value))),
+      repeat({delay: () => this.paused$.pipe(filter(value => !value))})
+    )
+    .subscribe(this.cycleSlides)
+  }
   nextSlide() {
     this.focusedIndex < this.slides.length-1 ? this.focusedIndex++ : null
   }
@@ -36,4 +45,10 @@ export class CarouselComponent {
     this.focusedIndex > 0 ? this.focusedIndex-- : null
   }
 
+  cycleSlides = () => {
+    if (this.focusedIndex === this.slides.length-1)
+      this.focusedIndex = 0;
+    else 
+      this.focusedIndex++;
+  }
 }

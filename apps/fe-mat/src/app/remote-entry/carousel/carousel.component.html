@@ -1,9 +1,9 @@
-<div class="slider-container">
+<div class="slider-container" (mouseenter)="paused$.next(true)" (mouseleave)="paused$.next(false)">
     <button mat-fab color="primary" (click)="prevSlide()" aria-label="Previous slide">
         <mat-icon>navigate_before</mat-icon>
       </button>
     <div class="slider">
-        <div class="inner" [style]="translation">
+        <div class="inner" [style]="translate">
         <ng-container *ngFor="let slide of slides">
             <mat-card class="slide">
                 <mat-card-header>
