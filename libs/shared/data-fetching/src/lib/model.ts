@@ -26,12 +26,16 @@ export interface DevtoSerializedArticle {
     canonical_url: string;
     cover_image: string;
     description: string;
+    organization?: {
+        name: string;
+    }
     title: string;
     type_of: string;
 }
 
 export interface SlideData {
     title: string;
+    subtitle?: string;
     image: string;
     content: string;
     link: string;

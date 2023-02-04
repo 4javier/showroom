@@ -43,9 +43,11 @@ export class ArticlesFetchingService {
 const mapDevtoArticleToSlide = (article: DevtoSerializedArticle): SlideData => {
   return {
     title: article.title,
+    subtitle: article.organization?.name,
     content: article.description,
     image: article.cover_image,
     link: article.canonical_url,
     origin: "assets/devto-badge.svg"
+
   }
 }
