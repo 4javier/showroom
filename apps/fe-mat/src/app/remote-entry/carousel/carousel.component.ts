@@ -35,7 +35,7 @@ export class CarouselComponent {
       takeUntil(this.paused$.pipe(filter(value => !!value))),
       repeat({delay: () => this.paused$.pipe(filter(value => !value))})
     )
-    .subscribe(this.cycleSlides)
+  //  .subscribe(this.cycleSlides)
   }
   nextSlide() {
     this.focusedIndex < this.slides.length-1 ? this.focusedIndex++ : null

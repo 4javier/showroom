@@ -3,6 +3,22 @@
   --slide-width: 80%;
 }
 
+mat-card-actions {
+  margin-top: auto;
+  justify-content: center;
+  padding: 0; 
+}
+
+::ng-deep .mat-mdc-card-header-text {
+  overflow: hidden;
+
+  & > mat-card-title:not(:hover) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 .slider-container {
   display: flex;
   justify-content: space-around;
@@ -26,3 +42,4 @@
   flex-shrink: 0;
   width: var(--slide-width);
 }
+

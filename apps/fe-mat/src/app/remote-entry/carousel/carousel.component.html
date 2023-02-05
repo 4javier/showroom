@@ -8,12 +8,16 @@
             <mat-card class="slide">
                 <mat-card-header>
                     <img *ngIf="slide.origin" mat-card-avatar [src]="slide.origin">
-                    <mat-card-title>
-                        <a [href]="slide.link" target="_blank">{{ slide.title }}</a>
-                    </mat-card-title>
+                    <mat-card-title>{{ slide.title }}</mat-card-title>
+                    <mat-card-subtitle *ngIf="slide.subtitle">{{ slide.subtitle }}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image [src]="slide.image" alt="Where's the image???">
-                <mat-card-content>{{ slide.content }}</mat-card-content>
+                <mat-card-content><p>{{ slide.content }}</p></mat-card-content>
+                <mat-card-actions>
+                    <a mat-icon-button color="primary" [href]="slide.link" target="_blank" aria-label="open in new tab">
+                        <mat-icon>open_in_new</mat-icon>
+                    </a>
+                </mat-card-actions>
             </mat-card>
         </ng-container>
         </div>
