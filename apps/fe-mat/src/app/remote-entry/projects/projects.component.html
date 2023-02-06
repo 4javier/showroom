@@ -1,1 +1,4 @@
-<p>projects works!</p>
+<ng-container *ngIf="repoSlides | async as slides; else loading">
+    <showroom-carousel [slides]="slides"/>
+</ng-container>
+<ng-template #loading><p>loading...</p></ng-template>

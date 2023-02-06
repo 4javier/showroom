@@ -13,8 +13,8 @@ import { CarouselComponent } from '../carousel/carousel.component';
 export class ArticlesComponent {
 
   articleSlides;
-  constructor(private fetch: ArticlesFetchingService) {
+  constructor(private fetcher: ArticlesFetchingService) {
 
-    this.articleSlides = fetch.devtoArticlesSlide$;
+    this.articleSlides = fetcher.devtoArticlesSlide$;
   }
 }
