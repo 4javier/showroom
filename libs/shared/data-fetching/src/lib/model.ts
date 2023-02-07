@@ -1,3 +1,5 @@
+import { SafeUrl } from "@angular/platform-browser";
+
 export interface GithubSerializedSearch {
     total_count: number;
     items: GithubSerializedRepo[]
@@ -6,20 +8,24 @@ export interface GithubSerializedSearch {
 export interface GithubSerializedRepo {
     name: string;
     description: string;
+    id: string;
 }
 
-export interface GithubRepoDTO extends GithubSerializedRepo{
+export interface GithubRepoDTO extends GithubSerializedRepo {
     origin: string;
+    imageUrl: string;
 }
 
 export interface GitlabSerializedRepo {
     name: string;
     description: string;
     topics: string[];
+    id: string;
 }
 
-export interface GitlabRepoDto extends GitlabSerializedRepo{
+export interface GitlabRepoDTO extends GitlabSerializedRepo {
     origin: string;
+    imageUrl: string;
 }
 
 export interface DevtoSerializedArticle {
@@ -36,7 +42,7 @@ export interface DevtoSerializedArticle {
 export interface SlideData {
     title: string;
     subtitle?: string;
-    image: string;
+    image?: string;
     content: string;
     link: string;
     origin?: string;
