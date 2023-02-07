@@ -1,1 +1,4 @@
-<p>articles works!</p>
+<ng-container *ngIf="articleSlides | async as slides; else loading">
+    <showroom-carousel [slides]="slides"/>
+</ng-container>
+<ng-template #loading><p>loading...</p></ng-template>

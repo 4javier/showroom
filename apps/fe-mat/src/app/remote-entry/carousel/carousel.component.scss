@@ -1,0 +1,45 @@
+:host {
+  --inner-gap: 5%;
+  --slide-width: 80%;
+}
+
+mat-card-actions {
+  margin-top: auto;
+  justify-content: center;
+  padding: 0; 
+}
+
+::ng-deep .mat-mdc-card-header-text {
+  overflow: hidden;
+
+  & > mat-card-title:not(:hover) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.slider-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.slider {
+  width: 50vw;
+  overflow: hidden;
+}
+
+.inner {
+  display: flex;  
+  transition: transform 0.3s;
+  justify-content: flex-start;
+  gap: var(--inner-gap);
+}
+
+.slide {
+  flex-shrink: 0;
+  width: var(--slide-width);
+}
+

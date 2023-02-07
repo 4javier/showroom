@@ -1,0 +1,29 @@
+<div class="slider-container" (mouseenter)="pauseOn()" (mouseleave)="pauseOff()">
+    <button mat-fab color="primary" (click)="prevSlide()" aria-label="Previous slide">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+    <div class="slider" (click)="toggleStop()">
+        <div class="inner" [style]="translate">
+        <ng-container *ngFor="let slide of slides">
+            <mat-card class="slide">
+                <mat-card-header>
+                    <img *ngIf="slide.origin" mat-card-avatar [src]="slide.origin">
+                    <mat-card-title>{{ slide.title }}</mat-card-title>
+                    <mat-card-subtitle *ngIf="slide.subtitle">{{ slide.subtitle }}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="slide.image" alt="Where's the image???">
+                <mat-card-content><p>{{ slide.content }}</p></mat-card-content>
+                <mat-card-actions>
+                    <a mat-icon-button color="primary" (click)="$event.stopPropagation()"
+                        [href]="slide.link" target="_blank" aria-label="open in new tab">
+                        <mat-icon>open_in_new</mat-icon>
+                    </a>
+                </mat-card-actions>
+            </mat-card>
+        </ng-container>
+        </div>
+    </div>
+    <button mat-fab color="primary" (click)="nextSlide()" aria-label="Next slide">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+</div>

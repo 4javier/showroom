@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@showroom/shared/data-fetching": [
+        "libs/shared/data-fetching/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
