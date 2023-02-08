@@ -1,12 +1,10 @@
 <mat-nav-list>
    <mat-list-item *ngFor="let link of links" 
       routerLinkActive #ref="routerLinkActive" [activated]="ref.isActive">
-      <div class="list-item-wrapper">
          <a [routerLink]="link.path">
             <span>{{link.name}}</span>
             <mat-icon>double_arrow</mat-icon>
          </a>
-      </div>
    </mat-list-item>
 </mat-nav-list>
    
