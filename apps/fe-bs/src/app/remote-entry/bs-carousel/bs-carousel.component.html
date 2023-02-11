@@ -1,0 +1,30 @@
+<ngb-carousel>
+    <ng-container >
+        <ng-template *ngFor="let slide of slides" ngbSlide class="card">
+            <div class="card">
+                <div class="card-header row">
+                    <div class="col-1">
+                        <img [src]="slide.origin" class="rounded-circle sr-avatar">
+                    </div>
+                    <div class="col">
+                        <h5>{{ slide.title }}</h5>
+                        <h6>{{ slide.subtitle }}</h6>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="picsum-img-wrapper">
+                        <img class="img-fluid" [src]="slide.image" [alt]="slide.title+' image'" />
+                    </div>
+                    <div class="carousel-caption">
+                        <p class="rounded-pill p-2 bg-dark bg-opacity-75">{{ slide.content }}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a [href]="slide.link" class="btn btn-primary">
+                        <img src="assets/up-right-from-square-solid.svg" class="sr-icon">
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </ng-container>
+</ngb-carousel>
