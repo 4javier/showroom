@@ -11,23 +11,4 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom
 })
-export class RemoteEntryComponent {
-  constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-    private renderer: Renderer2) {
-      const iconLink =  renderer.createElement('link');
-
-      renderer.setAttribute(
-        iconLink, 
-        'href', 
-        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css'
-      );
-      renderer.setAttribute(
-        iconLink, 
-        'rel',
-        'stylesheet'
-      );
-
-      renderer.appendChild(document.head, iconLink);
-  }
-}
+export class RemoteEntryComponent {}
