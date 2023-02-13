@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArticlesFetchingService } from '@showroom/shared/data-fetching';
-import { NgbCarousel, NgbCarouselConfig, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
-import { tap } from 'rxjs';
 import { BsCarouselComponent } from '../bs-carousel/bs-carousel.component';
 
 @Component({

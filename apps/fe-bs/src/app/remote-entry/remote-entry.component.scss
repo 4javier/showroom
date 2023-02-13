@@ -46,3 +46,7 @@
     fill: currentColor;
     align-self: center;
 }
+
+.carousel-inner {
+    border-radius: var(--bs-border-radius);
+}
