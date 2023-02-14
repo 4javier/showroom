@@ -1,28 +1,41 @@
 :host {
     display: block;
     position: relative;
-
     &:before {
         content:"";
         display: inline-block;
         position: absolute;
-        background: gray;
+        background: linear-gradient(153deg, rgba(24,122,109,1) 0%, rgba(0,181,123,1) 35%, rgba(194,245,255,0) 100%); 
         min-height: 100vh;
-        width: 100%;
+        width: 120%;
         top:0;
-        left:-25%;
+        left:-75%;
         bottom: 0;
         transform: skew(20deg, 0deg);
         z-index: -1;
     }
+    
 }
 
 .header {
     display: flex;
     justify-content: space-between;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    padding-bottom: 4rem;
+    flex-wrap: wrap;
+    @media(min-width: 576px) {
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .logo {
+        flex-grow: 1;
+        position: relative;
+    }
+
+    .abstract {
+        flex-grow: 2;
+        text-align: center;
+    }
 }
 
 .btns-container {
