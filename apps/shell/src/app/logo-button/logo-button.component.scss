@@ -1,6 +1,10 @@
+:host {
+    --sr-logo-button-size: 6rem;
+}
+
 div.logo {
-    width: 12rem;
-    height: 12rem;
+    width: var(--sr-logo-button-size);
+    height: var(--sr-logo-button-size);
     position: relative;
     display: flex;
     align-items: center;
@@ -19,8 +23,9 @@ div.logo {
         }
 
         &:nth-of-type(2) {
-            max-width: calc(12*0.4*1.41421)+rem;
-            max-height: calc(12*0.4*1.41421)+rem;
+            // compute inscript square side with inner-circle-radius * √2
+            max-width: calc(var(--sr-logo-button-size)*0.4*1.41421);
+            max-height: calc(var(--sr-logo-button-size)*0.4*1.41421);
         }
 
     }

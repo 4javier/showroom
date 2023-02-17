@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Attribute, Component, ElementRef, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,4 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./logo-button.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom
 })
-export class LogoButtonComponent {}
+export class LogoButtonComponent {
+
+  constructor(
+    private hostEl: ElementRef,
+    @Attribute('size') size: string
+  ) {
+    this.hostEl.nativeElement.style.setProperty('--sr-logo-button-size', size)
+  }
+}
