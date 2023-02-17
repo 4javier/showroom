@@ -16,10 +16,22 @@ div.logo {
         height: 100%;
         overflow: clip;
         overflow-clip-margin: 1rem;
+        
 
-        & circle {
-            stroke: blue;
-            fill: transparent;
+        & .outer-circle {
+            stroke: gray;
+            cx: 50%;
+            cy: 50%;
+            r: 50%;
+
+        }
+
+        & .inner-circle {
+            fill: #e8eaf6;
+            cx: 50%;
+            cy: 50%;
+            r: 40%;
+            
         }
 
         &:nth-of-type(2) {
