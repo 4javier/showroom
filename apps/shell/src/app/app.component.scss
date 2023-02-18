@@ -8,7 +8,7 @@ $background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,1
         display: inline-block;
         position: absolute;
         background: $background-gradient; 
-        min-height: 100vh;
+        height: 100vh;
         width: 120%;
         top:0;
         left:-75%;
