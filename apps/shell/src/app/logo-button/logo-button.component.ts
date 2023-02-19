@@ -1,4 +1,4 @@
-import { Attribute, Component, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Attribute, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LogoButtonComponent {
 
+  @HostBinding('class.pressed') @Input() pressed = false;
   constructor(
     private hostEl: ElementRef,
     @Attribute('size') size: string

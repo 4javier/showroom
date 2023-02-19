@@ -2,6 +2,22 @@
     --sr-logo-button-size: 6rem;
 }
 
+:host(.pressed) {
+    div.logo {
+
+        .inner-circle,
+        >svg:nth-of-type(2) {
+            transition: transform 0.25s;
+            transform: scale(0.95);
+        }
+
+        feDropShadow {
+            transition: flood-opacity 0.25s;
+            flood-opacity: 0;
+        }
+    }
+}
+
 div.logo {
     width: var(--sr-logo-button-size);
     height: var(--sr-logo-button-size);
@@ -10,12 +26,25 @@ div.logo {
     align-items: center;
     justify-content: center;
 
-    &:hover .inner-circle,
-    &:hover >svg:nth-of-type(2) {
-        transition: transform 0.5s;
-        transform-origin: center;
-        transform: scale(1.1);
-        will-change: transform;
+    &:hover {
+        
+        .inner-circle,
+        >svg:nth-of-type(2) {
+            transition: transform 0.25s;
+            transform-origin: center;
+            transform: scale(1.1);
+            will-change: transform;
+        }
+
+        feDropShadow {
+            flood-opacity: 0.7;
+            transition: flood-opacity 0.25s;
+        }
+    }
+
+    &:active .inner-circle,
+    &:active >svg:nth-of-type(2) {
+            transform: scale(1);
     }
 
     >svg {
@@ -24,24 +53,28 @@ div.logo {
         height: 100%;
         overflow: clip;
         overflow-clip-margin: 1rem;
-        
 
         & .outer-circle {
-            stroke: gray;
+            stroke: lightgray;
+            fill: transparent;
             cx: 50%;
             cy: 50%;
             r: 50%;
-
         }
 
         & .inner-circle {
             fill: #e8eaf6;
+            filter: url(#drop-shadow);
             cx: 50%;
             cy: 50%;
             r: 40%;
             transform-origin: center;
-            transition: transform 0.5s;
+            transition: transform 0.25s;
             will-change: transform;
+        }
+
+        feDropShadow {
+            transition: flood-opacity 0.25s;
         }
 
         &:nth-of-type(2) {
@@ -49,7 +82,7 @@ div.logo {
             max-width: calc(var(--sr-logo-button-size)*0.4*1.41421);
             max-height: calc(var(--sr-logo-button-size)*0.4*1.41421);
             transform-origin: center;
-            transition: transform 0.5s;
+            transition: transform 0.25s;
             will-change: transform;
         }
 

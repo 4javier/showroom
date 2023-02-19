@@ -1,39 +1,10 @@
-<div class="logo" id="logoButton">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0">
-    <defs>
-      <radialGradient id="button-shadow">
-        <stop offset="0.4" stop-color="#e8eaf6">
-          <animate
-            attributeName="offset"
-            values="0.4;0.2"
-            dur="0.25s"
-            begin="logoButton.mouseenter"
-            fill="freeze"/>
-          <animate
-            attributeName="offset"
-            values="0.2;0.4"
-            dur="0.25s"
-            begin="logoButton.mouseleave"
-            fill="freeze"/>
-        </stop>
-        <stop offset="0.9" stop-color="transparent">
-          <animate
-            attributeName="offset"
-            values="0.9;1"
-            dur="0.25s"
-            begin="logoButton.mouseenter"
-            fill="freeze"/>
-          <animate
-            attributeName="offset"
-            values="1;0.9"
-            dur="0.25s"
-            begin="logoButton.mouseleave"
-            fill="freeze"/>
-        </stop>
-      </radialGradient>
-    </defs>
-    <circle class="outer-circle" fill="url(#button-shadow)"/>
+<div class="logo" id="logoButton" (click)="pressed = true">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="drop-shadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="grey" />
+    </filter>
+    <circle class="outer-circle"/>
     <circle class="inner-circle"/>
   </svg>
-  <ng-content></ng-content>
+  <ng-content select="svg"></ng-content>
 </div>
