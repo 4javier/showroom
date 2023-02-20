@@ -11,6 +11,10 @@
             transform: scale(0.95);
         }
 
+        .inner-circle {
+            filter: url(#inset-shadow);
+        }
+
         feDropShadow {
             transition: flood-opacity 0.25s;
             flood-opacity: 0;

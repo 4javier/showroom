@@ -3,8 +3,18 @@
     <filter id="drop-shadow">
       <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="grey" />
     </filter>
-    <circle class="outer-circle"/>
-    <circle class="inner-circle"/>
+    <filter id="inset-shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feComposite operator="out" in="SourceAlpha" result="inverse" />
+      <feFlood flood-color="black" flood-opacity="0.5" result="color" />
+      <feComposite operator="in" in="inverse" />
+    </filter>
+    <circle class="outer-circle" />
+    <g class="outer-circle-paths" fill="transparent">
+      <path d="M 50,100 A 50 50 0 0 1 50,0" pathLength="1" />
+      <path d="M 50,100 A 50 50 0 0 0 50,0" pathLength="1" />
+    </g>
+    <circle class="inner-circle" />
   </svg>
   <ng-content select="svg"></ng-content>
 </div>
