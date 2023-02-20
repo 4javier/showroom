@@ -15,6 +15,27 @@
             transition: flood-opacity 0.25s;
             flood-opacity: 0;
         }
+
+        .outer-circle-paths >path {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            stroke: #3F51B5;
+            animation: dash 0.25s linear alternate forwards;
+        }
+          
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 1;
+            }
+            50% {
+                filter: none;
+            }
+            100% {
+                stroke-dashoffset: 0;
+                filter: drop-shadow(0 0 0.05rem #3F51B5);
+            }
+
+        }
     }
 }
 
