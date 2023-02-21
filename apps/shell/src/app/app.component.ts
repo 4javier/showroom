@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 import { LogoButtonComponent } from './logo-button/logo-button.component';
+import { homeAnimationSequence } from './animations';
 
 @Component({
   standalone: true,
@@ -8,7 +9,8 @@ import { LogoButtonComponent } from './logo-button/logo-button.component';
   selector: 'showroom-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [homeAnimationSequence]
 })
 export class AppComponent {
-  title = 'shell';
+  animState = '';
 }

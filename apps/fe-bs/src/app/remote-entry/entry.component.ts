@@ -1,7 +1,8 @@
-import { Component, Inject, Renderer2, ViewEncapsulation } from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, HostBinding, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterOutlet } from '@angular/router';
+import { fromLeft } from '../animations';
 
 @Component({
   standalone: true,
@@ -9,6 +10,11 @@ import { RouterOutlet } from '@angular/router';
   selector: 'showroom-fe-bs-entry',
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.ShadowDom,
+  animations: [fromLeft],
+  host: { 'style': 'display: block' }
 })
-export class RemoteEntryComponent {}
+export class RemoteEntryComponent {
+  @HostBinding('class.animate-from-left') animated = true;
+
+}
