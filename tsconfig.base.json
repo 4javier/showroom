@@ -17,6 +17,9 @@
     "paths": {
       "@showroom/shared/data-fetching": [
         "libs/shared/data-fetching/src/index.ts"
+      ],
+      "@showroom/shared/routing-animation": [
+        "libs/shared/routing-animation/src/index.ts"
       ]
     }
   },

@@ -3,7 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { fromLeft } from '../animations';
+import { RoutingAnimationService, slideLeftAnimation } from '@showroom/shared/routing-animation'
 
 @Component({
   standalone: true,
@@ -12,14 +12,18 @@ import { fromLeft } from '../animations';
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  animations: [fromLeft],
+  animations: [slideLeftAnimation],
   host: { 'style': 'display: block' }
 })
 export class RemoteEntryComponent {
-  @HostBinding('class.animate-from-left') animated = true;
+
+  clear$ = this.ras.clear$;
+  slide$ = this.ras.slide$;
+
   constructor(
     @Inject(DOCUMENT) private readonly document: Document,
-    private renderer: Renderer2
+    renderer: Renderer2,
+    public ras: RoutingAnimationService
   ) {
       const fontLink =  renderer.createElement('link');
       const iconLink =  renderer.createElement('link');
@@ -49,4 +53,5 @@ export class RemoteEntryComponent {
       renderer.appendChild(document.head, fontLink);
       renderer.appendChild(document.head, iconLink);
   }
+
 }
