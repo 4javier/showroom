@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'shared-routing-animation',
+  displayName: 'shared-shadow-routing-animation',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {

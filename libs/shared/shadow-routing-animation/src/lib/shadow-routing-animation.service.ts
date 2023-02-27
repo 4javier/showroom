@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, OutletContext, Router, RouterOutlet } from '@angular/router';
-import { BehaviorSubject, bufferToggle, concat, concatMap, distinctUntilChanged, EMPTY, filter, map, merge, mergeAll, ReplaySubject, share, shareReplay, startWith, Subject, switchMap, take, tap, throttle, windowToggle } from 'rxjs';
-import { AnimationEvent }from '@angular/animations'
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, EMPTY, ReplaySubject, shareReplay, switchMap, tap } from 'rxjs';
+import { AnimationEvent }from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RoutingAnimationService {
+export class ShadowRoutingAnimationService {
 
   public _slide$ = new BehaviorSubject<'in'|'out'>('in');
   public slide$ = this._slide$.pipe(shareReplay())
