@@ -1,7 +1,7 @@
 import { ActivatedRoute, ChildrenOutletContexts, NavigationEnd, NavigationStart, OutletContext, Router, RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 import { LogoButtonComponent } from './logo-button/logo-button.component';
-import { RoutingAnimationService } from '@showroom/shared/routing-animation';
+import { ShadowRoutingAnimationService } from '@showroom/shared/routing-animation';
 import { filter, map, Observable, shareReplay, tap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 
@@ -18,7 +18,7 @@ export class AppComponent {
 
   constructor(
     router: Router,
-    private ras: RoutingAnimationService,
+    private ras: ShadowRoutingAnimationService,
   ) {
     this.activeRoute$ = router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),

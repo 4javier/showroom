@@ -1,9 +1,5 @@
 <mat-drawer-container hasBackdrop="false">
-    <mat-drawer 
-        [@slideLeftAnimation]="slide$ | async" 
-        (@slideLeftAnimation.done)="ras.markAsClear($event)"
-        (@slideLeftAnimation.start)="ras.markAsDirty($event)"
-        mode="side" opened disableClose>
+    <mat-drawer sr-sra mode="side" opened disableClose>
         <showroom-nav-list/>
     </mat-drawer>
     <mat-drawer-content>

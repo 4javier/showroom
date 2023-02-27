@@ -1,10 +1,6 @@
 <div class="container-fluid vh-100">
     <div class="row">
-        <div 
-            [@slideLeftAnimation]="slide$ | async" 
-            (@slideLeftAnimation.done)="ras.markAsClear($event)"
-            (@slideLeftAnimation.start)="ras.markAsDirty($event)"
-            class="col-2 p-0">
+        <div sr-sra class="col-2 p-0">
             <showroom-nav-list/>
         </div>
         <div class="router-wrapper col text-center">

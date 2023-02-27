@@ -1,13 +1,13 @@
-import { Component, HostBinding, Inject, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, Renderer2, ViewEncapsulation } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { RoutingAnimationService, slideLeftAnimation } from '@showroom/shared/routing-animation'
+import { ShadowRoutingAnimationDirective, slideLeftAnimation } from '@showroom/shared/routing-animation'
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, NavListComponent, MatSidenavModule],
+  imports: [CommonModule, RouterModule, ShadowRoutingAnimationDirective, NavListComponent, MatSidenavModule],
   selector: 'showroom-fe-mat-entry',
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
@@ -17,13 +17,9 @@ import { RoutingAnimationService, slideLeftAnimation } from '@showroom/shared/ro
 })
 export class RemoteEntryComponent {
 
-  clear$ = this.ras.clear$;
-  slide$ = this.ras.slide$;
-
   constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
+    @Inject(DOCUMENT) readonly document: Document,
     renderer: Renderer2,
-    public ras: RoutingAnimationService
   ) {
       const fontLink =  renderer.createElement('link');
       const iconLink =  renderer.createElement('link');
