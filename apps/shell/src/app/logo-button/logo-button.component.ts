@@ -11,7 +11,14 @@ import { CommonModule } from '@angular/common';
 })
 export class LogoButtonComponent {
 
-  @HostBinding('class.pressed') @Input() pressed = false;
+  @HostBinding('class.activating') @Input() activating = false;
+  private _activated = false;
+  @HostBinding('class.activated') @Input() get activated() {return this._activated};
+  set activated(activated: boolean) {
+    this._activated = activated;
+    activated ? this.activating = false : null;
+  }
+  
   constructor(
     private hostEl: ElementRef,
     @Attribute('size') size: string

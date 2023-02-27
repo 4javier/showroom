@@ -2,13 +2,33 @@
     --sr-logo-button-size: 6rem;
 }
 
-:host(.pressed) {
+:host(.activating) {
+
     div.logo {
+        feDropShadow {
+            transition: flood-opacity 0.25s;
+            flood-opacity: 0;
+        }
 
         .inner-circle,
         >svg:nth-of-type(2) {
             transition: transform 0.25s;
+            transform: scale(1);
+        }
+    }
+}
+
+:host(.activated) {
+    pointer-events: none;
+
+    div.logo {
+
+        .inner-circle,
+        >svg:nth-of-type(2) {
+            transform-origin: center;
+            transition: transform 0.25s;
             transform: scale(0.95);
+            will-change: transform;
         }
 
         .inner-circle {
@@ -20,20 +40,22 @@
             flood-opacity: 0;
         }
 
-        .outer-circle-paths >path {
+        .outer-circle-paths>path {
             stroke-dasharray: 1;
             stroke-dashoffset: 1;
             stroke: #3F51B5;
             animation: dash 0.25s linear alternate forwards;
         }
-          
+
         @keyframes dash {
             0% {
                 stroke-dashoffset: 1;
             }
+
             50% {
                 filter: none;
             }
+
             100% {
                 stroke-dashoffset: 0;
                 filter: drop-shadow(0 0 0.05rem #3F51B5);
@@ -52,7 +74,7 @@ div.logo {
     justify-content: center;
 
     &:hover {
-        
+
         .inner-circle,
         >svg:nth-of-type(2) {
             transition: transform 0.25s;
@@ -68,8 +90,8 @@ div.logo {
     }
 
     &:active .inner-circle,
-    &:active >svg:nth-of-type(2) {
-            transform: scale(1);
+    &:active>svg:nth-of-type(2) {
+        transform: scale(1);
     }
 
     >svg {
@@ -93,9 +115,6 @@ div.logo {
             cx: 50%;
             cy: 50%;
             r: 40%;
-            transform-origin: center;
-            transition: transform 0.25s;
-            will-change: transform;
         }
 
         feDropShadow {
