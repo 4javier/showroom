@@ -3,7 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ShadowRoutingAnimationDirective, slideLeftAnimation } from '@showroom/shared/routing-animation'
+import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
 
 @Component({
   standalone: true,
@@ -12,7 +12,7 @@ import { ShadowRoutingAnimationDirective, slideLeftAnimation } from '@showroom/s
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  animations: [slideLeftAnimation],
+  animations: [shadowSlideLeftAnimation],
   host: { 'style': 'display: block' }
 })
 export class RemoteEntryComponent {

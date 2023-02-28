@@ -1,6 +1,6 @@
 import { style, animate, trigger, transition, state } from "@angular/animations";
 
-export const slideLeftAnimation = [
+export const shadowSlideLeftAnimation = [
     trigger('slideLeftAnimation', [
         state('in', style({ transform: 'translateX(0%)' })),
         state('out', style({ transform: 'translateX(-100%)' })),

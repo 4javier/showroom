@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShadowRoutingAnimationDirective, slideLeftAnimation } from '@showroom/shared/routing-animation';
+import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation';
 
 @Component({
   selector: 'showroom-home',
@@ -8,6 +8,6 @@ import { ShadowRoutingAnimationDirective, slideLeftAnimation } from '@showroom/s
   imports: [CommonModule, ShadowRoutingAnimationDirective],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  animations: [slideLeftAnimation],
+  animations: [shadowSlideLeftAnimation],
 })
 export class HomeComponent {}
