@@ -4,15 +4,20 @@ import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
+import { LightRoutingAnimationHostDirective, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, ShadowRoutingAnimationDirective, NavListComponent, MatSidenavModule],
+  imports: [
+    CommonModule, RouterModule,
+    ShadowRoutingAnimationDirective, LightRoutingAnimationHostDirective,
+    NavListComponent, MatSidenavModule
+  ],
   selector: 'showroom-fe-mat-entry',
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  animations: [shadowSlideLeftAnimation],
+  animations: [shadowSlideLeftAnimation, lightSlideLeftAnimation],
   host: { 'style': 'display: block' }
 })
 export class RemoteEntryComponent {
