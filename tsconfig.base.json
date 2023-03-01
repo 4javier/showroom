@@ -18,6 +18,9 @@
       "@showroom/shared/data-fetching": [
         "libs/shared/data-fetching/src/index.ts"
       ],
+      "@showroom/shared/light-routing-animation": [
+        "libs/shared/light-routing-animation/src/index.ts"
+      ],
       "@showroom/shared/shadow-routing-animation": [
         "libs/shared/shadow-routing-animation/src/index.ts"
       ]
