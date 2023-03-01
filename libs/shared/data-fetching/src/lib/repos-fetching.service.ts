@@ -55,7 +55,7 @@ export class ReposFetchingService {
       retry(5),
       catchError(() => throwError(() => new Error('An error occurred while fetching repos from Gitlab'))),
       concatAll(),
-      filter(repo => repo.topics.includes('ge-showroom')),
+      filter(repo => repo.topics.includes(`${REPO_TOPIC}`)),
       map(repo => (
         {
           ...repo, 

@@ -12,9 +12,9 @@ import { BsCarouselComponent } from '../bs-carousel/bs-carousel.component';
 })
 export class ProjectsComponent {
 
-  repoSlides;
-  constructor(private fetcher: ReposFetchingService) {
+  repoSlides$;
+  constructor(fetcher: ReposFetchingService) {
     
-    this.repoSlides = fetcher.repoSlides$
+    this.repoSlides$ = fetcher.repoSlides$
   }
 }

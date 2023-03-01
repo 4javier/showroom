@@ -14,7 +14,7 @@ export class ArticlesFetchingService {
   devtoArticles$;
   devtoArticlesSlide$;
 
-  constructor(private http: HttpClient) {
+  constructor(http: HttpClient) {
 
     this.devtoArticles$ = http.get<Array<DevtoSerializedArticle>>(
       `${this.DEV_TO_API}/articles`,

@@ -1,4 +1,4 @@
-<ng-container *ngIf="repoSlides | async as slides; else loading">
+<ng-container *ngIf="repoSlides$ | async as slides; else loading">
     <showroom-carousel sr-lra-item [slides]="slides"/>
 </ng-container>
-<ng-template #loading><p>loading...</p></ng-template>
+<ng-template sr-lra-item #loading><showroom-carousel sr-lra-item/></ng-template>

@@ -12,9 +12,9 @@ import { BsCarouselComponent } from '../bs-carousel/bs-carousel.component';
 })
 export class ArticlesComponent {
 
-  articleSlides;
-  constructor(private fetcher: ArticlesFetchingService) {
+  articleSlides$;
+  constructor(fetcher: ArticlesFetchingService) {
 
-    this.articleSlides = fetcher.devtoArticlesSlide$;
+    this.articleSlides$ = fetcher.devtoArticlesSlide$;
   }
 }

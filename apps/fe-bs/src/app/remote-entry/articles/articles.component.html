@@ -1,6 +1,6 @@
 <div sr-lra-item class="row justify-content-center">
 	<div class="col-8">
-		<ng-container *ngIf="articleSlides | async as slides; else loading">
+		<ng-container *ngIf="articleSlides$ | async as slides; else loading">
 			<showroom-bs-carousel [slides]="slides"/>
 		</ng-container>
 		<ng-template #loading><p>loading...</p></ng-template>
