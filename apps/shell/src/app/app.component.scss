@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
 $background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,166,255,1) 42%, rgba(194,216,255,0) 75%); 
 
 :host {
@@ -30,6 +32,8 @@ $background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,1
     }
 
     .logo {
+        font-family: 'Cinzel Decorative';
+        font-size: 4rem;
         flex-grow: 1;
         position: relative;
     }
