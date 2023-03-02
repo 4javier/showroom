@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReposFetchingService, ArticlesFetchingService } from '@showroom/shared/data-fetching'
+import { ReposFetchingService } from '@showroom/shared/data-fetching'
 import { CarouselComponent } from '../carousel/carousel.component';
+import { fadeIn } from '../../animations';
 
 @Component({
   selector: 'showroom-projects',
@@ -9,6 +10,7 @@ import { CarouselComponent } from '../carousel/carousel.component';
   imports: [CommonModule, CarouselComponent],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
+  animations: [fadeIn]
 })
 export class ProjectsComponent {
 

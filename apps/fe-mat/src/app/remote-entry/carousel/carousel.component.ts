@@ -4,26 +4,28 @@ import { MatCardModule } from '@angular/material/card'
 import { SlideData } from 'libs/shared/data-fetching/src/lib/model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { BehaviorSubject, combineLatest, interval, NEVER, ReplaySubject, scan, startWith, switchMap, takeUntil } from 'rxjs';
-import { log } from 'console';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BehaviorSubject, combineLatest, interval, NEVER, ReplaySubject, scan, switchMap, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'showroom-carousel',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule],
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent {
 
   @Input()
+  isLoading = false;
+  @Input()
   slides: SlideData[] = [];
   _focusIndex = 0;
   translate = ''
   set focusedIndex(i: number) {
-    i === 0 
+    i === 0
       ? this.translate = ''
-      : this.translate = `transform: translateX(-${75+85*(i-1)}%)`
+      : this.translate = `transform: translateX(-${75 + 85 * (i - 1)}%)`
     this._focusIndex = i;
   };
   get focusedIndex() {
@@ -35,18 +37,18 @@ export class CarouselComponent {
     scan((acc, _) => !acc, true)
   );
   private destroy$ = new ReplaySubject<boolean>();
-  
-  ngOnInit() {
+
+  constructor() {
 
     combineLatest([this.paused$, this.stopped$]).pipe(
       switchMap(([paused, stopped]) => !!paused || !!stopped ? NEVER : interval(3000)),
       takeUntil(this.destroy$)
     )
-    .subscribe(this.cycleSlides)
+      .subscribe(this.cycleSlides)
   }
 
   nextSlide() {
-    this.focusedIndex < this.slides.length-1 ? this.focusedIndex++ : null
+    this.focusedIndex < this.slides.length - 1 ? this.focusedIndex++ : null
   }
 
   prevSlide() {
@@ -54,9 +56,9 @@ export class CarouselComponent {
   }
 
   cycleSlides = () => {
-    if (this.focusedIndex === this.slides.length-1)
+    if (this.focusedIndex === this.slides.length - 1)
       this.focusedIndex = 0;
-    else 
+    else
       this.focusedIndex++;
   }
 

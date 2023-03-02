@@ -15,14 +15,16 @@ $sr-light-background-edits: (
 );
 mat.$light-theme-background-palette: map.merge(mat.$light-theme-background-palette, $sr-light-background-edits);
 
-$sr-theme: mat.define-light-theme((
- color: (
-   primary: $sr-primary,
-   accent: $sr-accent,
- ),
- typography: mat.define-typography-config(),
- density: 0,
-));
+$sr-theme: mat.define-light-theme(
+  (color:
+    (
+      primary: $sr-primary,
+      accent: $sr-accent,
+    ),
+      typography: mat.define-typography-config(),
+      density: 0,
+  )
+);
 
 @include mat.all-component-themes($sr-theme);
 
@@ -37,4 +39,9 @@ mat-drawer-container {
   min-height: 100%;
   justify-content: center;
   padding-top: 6rem;
+  flex-wrap: wrap;
+
+  & > * {
+    width: 100%;
+  }
 }
