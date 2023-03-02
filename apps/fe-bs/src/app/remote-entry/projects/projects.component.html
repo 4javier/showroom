@@ -3,6 +3,6 @@
 		<ng-container *ngIf="repoSlides$ | async as slides; else loading">
 			<showroom-bs-carousel [slides]="slides"/>
 		</ng-container>
-		<ng-template #loading><p>loading...</p></ng-template>
+		<ng-template #loading><showroom-bs-carousel [isLoading]="true"/></ng-template>
 	</div>
 </div>

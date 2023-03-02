@@ -1,6 +1,6 @@
-<ngb-carousel>
+<ngb-carousel @fadeIn *ngIf="!isLoading; else placeholder">
     <ng-container>
-        <ng-template *ngFor="let slide of slides" ngbSlide class="card">
+        <ng-template *ngFor="let slide of slides" ngbSlide>
             <div class="card">
                 <div class="card-header row">
                     <div class="col-1">
@@ -32,3 +32,39 @@
         </ng-template>
     </ng-container>
 </ngb-carousel>
+
+<ng-template #placeholder>
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <div class="card">
+                <div class="card-header row">
+                    <div class="col-1 placeholder-glow">
+                        <img class="rounded-circle sr-avatar placeholder">
+                    </div>
+                    <div class="col placeholder-glow">
+                        <h5 class="placeholder w-50 sr-placeholder-text"></h5>
+                        <h6 class="placeholder w-25 sr-placeholder-text"></h6>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="picsum-img-wrapper placeholder-glow">
+                        <img class="img-fluid placeholder sr-placeholder-img" />
+                    </div>
+                    <div class="carousel-caption placeholder-glow">
+                        <p class="rounded-pill p-2 bg-dark bg-opacity-75 
+                            placeholder w-75 sr-placeholder-text"><br></p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary disabled placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sr-bs-icon"
+                            viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</ng-template>
