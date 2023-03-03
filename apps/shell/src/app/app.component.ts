@@ -1,8 +1,8 @@
-import { ActivatedRoute, ChildrenOutletContexts, NavigationEnd, NavigationStart, OutletContext, Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 import { LogoButtonComponent } from './logo-button/logo-button.component';
 import { ShadowRoutingAnimationService } from '@showroom/shared/shadow-routing-animation';
-import { filter, map, Observable, shareReplay, tap } from 'rxjs';
+import { filter, map, Observable, shareReplay } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({

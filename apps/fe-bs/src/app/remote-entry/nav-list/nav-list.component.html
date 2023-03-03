@@ -1,4 +1,4 @@
-<nav ngbNav [activeId]="route.url | async" class="nav-pills" orientation="vertical">
+<nav ngbNav [activeId]="activeRoute$ | async" class="nav-pills" orientation="vertical">
     <div [ngbNavItem]="link.path" *ngFor="let link of links">
         <a ngbNavLink [routerLink]="link.path" class="d-flex justify-content-between">
             <span>{{ link.name }}</span>
