@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter, map, Observable } from 'rxjs';
+import { filter, map, Observable, startWith } from 'rxjs';
 
 export type LinkListItem = {
   name: string;
@@ -29,7 +29,9 @@ export class NavListComponent {
   constructor(public router: Router) {
     this.activeRoute$ = router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-      map(e => e.url.split('/')[2]),
+      map(e => e.url),
+      startWith(router.url),
+      map(url => url.split('/')[2]),
     )
   }
 }
