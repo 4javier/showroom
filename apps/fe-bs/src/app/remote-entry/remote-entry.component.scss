@@ -40,11 +40,29 @@
     padding-top: 6rem;
 }
 
+.sr-offcanvas-panel {
+    position: absolute;
+    padding: 0;
+    border-top-right-radius: var(--bs-border-radius-lg);
+    border-bottom-right-radius: var(--bs-border-radius-lg);
+    min-height: 100vh;
+    max-width: 40vw;
+    @include media-breakpoint-up(sm) { 
+        max-width: 30vw;
+    }
+}
+
 .sr-bs-icon {
     width: 1em;
     height: 1em;
     fill: currentColor;
     align-self: center;
+}
+
+.sr-sidenav-toggle-btn {
+    display: flex;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .carousel-inner {
