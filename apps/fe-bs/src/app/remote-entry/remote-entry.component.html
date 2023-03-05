@@ -1,7 +1,9 @@
-<div class="container-fluid vh-100">
+<div class="container-fluid position-relative vh-100" #container>
     <div class="d-lg-none row">
         <div class="col-2 p-0">
-            <button (click)="openSidenav()" class="btn btn-lg btn-secondary sr-sidenav-toggle-btn">
+            <button  *ngIf="showButton$ | async"
+                @ocBtnSlideInFromLeft @ocBtnSlideOutFromLeft (@ocBtnSlideOutFromLeft.done)="buttonGone($event)"
+                (click)="hideButton$.next(true)" class="btn btn-lg btn-secondary sr-sidenav-toggle-btn">
                 <svg class="sr-bs-icon" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path
@@ -10,8 +12,8 @@
             </button>
         </div>
     </div>
-    <div class="row position-relative" #mainRow>
-        <div sr-sra class="d-none d-lg-block col-2 p-0">
+    <div class="row">
+        <div sr-sra class="d-none d-lg-block col-2 p-0 sr-sidebar">
             <showroom-nav-list />
         </div>
         <div sr-lra-host class="router-wrapper col text-center">

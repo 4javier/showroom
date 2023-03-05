@@ -40,6 +40,10 @@
     padding-top: 6rem;
 }
 
+.sr-sidebar {
+    z-index: $zindex-offcanvas;
+}
+
 .sr-offcanvas-panel {
     position: absolute;
     padding: 0;
@@ -52,17 +56,17 @@
     }
 }
 
+.sr-sidenav-toggle-btn {
+    display: flex;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 .sr-bs-icon {
     width: 1em;
     height: 1em;
     fill: currentColor;
     align-self: center;
-}
-
-.sr-sidenav-toggle-btn {
-    display: flex;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
 
 .carousel-inner {

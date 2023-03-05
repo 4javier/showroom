@@ -5,6 +5,9 @@ import { RouterOutlet } from '@angular/router';
 import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
 import { LightRoutingAnimationHostDirective, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { ocBtnSlideInFromLeft, ocBtnSlideOutFromLeft } from '../animations';
+import { BehaviorSubject, map, merge } from 'rxjs';
+import { AnimationEvent } from '@angular/animations';
 
 @Component({
   standalone: true,
@@ -17,23 +20,41 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  animations: [shadowSlideLeftAnimation, lightSlideLeftAnimation],
+  animations: [
+    shadowSlideLeftAnimation, lightSlideLeftAnimation,
+    ocBtnSlideInFromLeft, ocBtnSlideOutFromLeft
+  ],
   host: { 'style': 'display: block' }
 })
 export class RemoteEntryComponent {
   
-  @ViewChild('mainRow') mainRow!: ElementRef<HTMLDivElement>;
-  constructor(
-    private hostElement: ElementRef,
-    private offcanvasService: NgbOffcanvas) {}
+  @ViewChild('container') container!: ElementRef<HTMLDivElement>;
+
+  hideButton$ = new BehaviorSubject<boolean>(false);
+  showButton$ = this.hideButton$.pipe(map(v => !v));
+
+  constructor(private offcanvasService: NgbOffcanvas) {}
 
 	openSidenav() {
-		this.offcanvasService.open(NavListComponent,
-       {
-        container: this.mainRow.nativeElement,
+		const offcanvasRef = this.offcanvasService.open(NavListComponent,
+      {
+        container: this.container.nativeElement,
         scroll: true,
         panelClass: 'sr-offcanvas-panel'
-      });
+      }
+    );
+
+    this.showButton$ = merge(
+      this.hideButton$.pipe(map(() => false)),
+      offcanvasRef.hidden.pipe(map(() => true))
+    )
+
 	}
+
+  buttonGone(ev: AnimationEvent) {
+    if(ev.toState === 'void') {
+      this.openSidenav()
+    }
+  }
 
 }
