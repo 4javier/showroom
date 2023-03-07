@@ -36,7 +36,8 @@ export class RemoteEntryComponent {
   constructor(private offcanvasService: NgbOffcanvas) {}
 
 	openSidenav() {
-		const offcanvasRef = this.offcanvasService.open(NavListComponent,
+		const offcanvasRef = this.offcanvasService.open(
+      NavListComponent,
       {
         container: this.container.nativeElement,
         scroll: true,

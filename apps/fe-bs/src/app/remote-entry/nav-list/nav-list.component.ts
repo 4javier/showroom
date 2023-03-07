@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveOffcanvas, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter, map, Observable, startWith } from 'rxjs';
+import { filter, map, Observable, startWith, tap } from 'rxjs';
 
 export type LinkListItem = {
   name: string;
@@ -12,7 +12,7 @@ export type LinkListItem = {
 @Component({
   selector: 'showroom-nav-list',
   standalone: true,
-  imports: [CommonModule, NgbNavModule, RouterLink],
+  imports: [CommonModule, RouterLink, NgbNavModule ],
   templateUrl: './nav-list.component.html',
   styleUrls: ['./nav-list.component.scss'],
 })
@@ -21,15 +21,19 @@ export class NavListComponent {
   activeRoute$: Observable<string>;
 
   links: LinkListItem[] = [
-    {name: 'Home', path: 'home'},
-    {name: 'My Projects', path: 'projects'},
-    {name: 'My Articles', path: 'articles'}
+    { name: 'Home', path: 'home' },
+    { name: 'My Projects', path: 'projects' },
+    { name: 'My Articles', path: 'articles' }
   ]
 
-  constructor(public router: Router) {
+  constructor(
+    router: Router,
+    @Optional() activeOffcanvas?: NgbActiveOffcanvas
+  ) {
     this.activeRoute$ = router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),
       map(e => e.url),
+      tap(() => activeOffcanvas?.close()),
       startWith(router.url),
       map(url => url.split('/')[2]),
     )
