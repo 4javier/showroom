@@ -28,12 +28,36 @@ export class RemoteEntryComponent {
     renderer: Renderer2,
     matIconRegistry: MatIconRegistry
   ) {
+    addMaterialLinksToHead(renderer);
     matIconRegistry.setDefaultFontSetClass('material-symbols-outlined')
 
-      'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined'
+const addMaterialLinksToHead = (renderer: Renderer2) => {
+    const fontLink = renderer.createElement('link');
+    const iconLink = renderer.createElement('link');
 
-      renderer.appendChild(document.head, fontLink);
-      renderer.appendChild(document.head, iconLink);
+    renderer.setAttribute(
+      fontLink,
+      'href',
+      'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap'
+    );
+    renderer.setAttribute(
+      fontLink,
+      'rel',
+      'stylesheet'
+    );
+
+    renderer.setAttribute(
+      iconLink,
+      'href',
+      'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined'
+    );
+    renderer.setAttribute(
+      iconLink,
+      'rel',
+      'stylesheet'
+    );
+
+    renderer.appendChild(document.head, fontLink);
+    renderer.appendChild(document.head, iconLink);
   }
 
-}
