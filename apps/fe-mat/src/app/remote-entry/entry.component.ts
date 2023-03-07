@@ -5,19 +5,20 @@ import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
 import { LightRoutingAnimationHostDirective, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   standalone: true,
   imports: [
     CommonModule, RouterModule,
     ShadowRoutingAnimationDirective, LightRoutingAnimationHostDirective,
-    NavListComponent, MatSidenavModule
+    NavListComponent, MatSidenavModule, MatButtonModule, MatIconModule
   ],
   selector: 'showroom-fe-mat-entry',
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  animations: [shadowSlideLeftAnimation, lightSlideLeftAnimation],
+  providers: [ MatIconRegistry ],
   host: { 'style': 'display: block' }
 })
 export class RemoteEntryComponent {
@@ -25,31 +26,11 @@ export class RemoteEntryComponent {
   constructor(
     @Inject(DOCUMENT) readonly document: Document,
     renderer: Renderer2,
+    matIconRegistry: MatIconRegistry
   ) {
-      const fontLink =  renderer.createElement('link');
-      const iconLink =  renderer.createElement('link');
-      
-      renderer.setAttribute(
-        fontLink, 
-        'href', 
-        'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap'
-      );
-      renderer.setAttribute(
-        fontLink, 
-        'rel',
-        'stylesheet'
-      );
+    matIconRegistry.setDefaultFontSetClass('material-symbols-outlined')
 
-      renderer.setAttribute(
-        iconLink, 
-        'href', 
-        'https://fonts.googleapis.com/icon?family=Material+Icons'
-      );
-      renderer.setAttribute(
-        iconLink, 
-        'rel',
-        'stylesheet'
-      );
+      'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined'
 
       renderer.appendChild(document.head, fontLink);
       renderer.appendChild(document.head, iconLink);
