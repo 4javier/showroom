@@ -6,7 +6,7 @@ import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@show
 import { LightRoutingAnimationHostDirective, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { ocBtnSlideInFromLeft, ocBtnSlideOutFromLeft } from '../animations';
-import { BehaviorSubject, map, merge } from 'rxjs';
+import { map, merge, startWith, Subject } from 'rxjs';
 import { AnimationEvent } from '@angular/animations';
 
 @Component({
@@ -30,8 +30,8 @@ export class RemoteEntryComponent {
   
   @ViewChild('container') container!: ElementRef<HTMLDivElement>;
 
-  hideButton$ = new BehaviorSubject<boolean>(false);
-  showButton$ = this.hideButton$.pipe(map(v => !v));
+  hideButton$ = new Subject<void>();
+  isButtonShown$ = this.hideButton$.pipe(startWith(true));
 
   constructor(private offcanvasService: NgbOffcanvas) {}
 
@@ -44,7 +44,7 @@ export class RemoteEntryComponent {
       }
     );
 
-    this.showButton$ = merge(
+    this.isButtonShown$ = merge(
       this.hideButton$.pipe(map(() => false)),
       offcanvasRef.hidden.pipe(map(() => true))
     )

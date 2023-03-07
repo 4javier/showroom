@@ -1,9 +1,9 @@
 <div class="container-fluid position-relative vh-100" #container>
-    <div class="d-lg-none row">
+    <div class="d-lg-none row position-absolute">
         <div class="col-2 p-0">
-            <button  *ngIf="showButton$ | async"
+            <button *ngIf="isButtonShown$ | async"
                 @ocBtnSlideInFromLeft @ocBtnSlideOutFromLeft (@ocBtnSlideOutFromLeft.done)="buttonGone($event)"
-                (click)="hideButton$.next(true)" class="btn btn-lg btn-secondary sr-sidenav-toggle-btn">
+                (click)="hideButton$.next()" class="btn btn-lg btn-secondary sr-sidenav-toggle-btn">
                 <svg class="sr-bs-icon" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path

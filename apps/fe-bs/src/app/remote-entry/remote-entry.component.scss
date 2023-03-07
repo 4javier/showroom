@@ -33,7 +33,10 @@
 @import "bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
 
-:host { @extend :root; @extend body};
+:host { 
+    @extend :root;
+    @extend body;
+    --sr-modal-content-bg: var(--bs-light-rgb)};
 
 .router-wrapper {
     min-height: 100%;
@@ -54,6 +57,7 @@
     @include media-breakpoint-up(sm) { 
         max-width: 30vw;
     }
+    background-color: rgba(var(--sr-modal-content-bg), 0.9);
 }
 
 .sr-sidenav-toggle-btn {
