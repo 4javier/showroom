@@ -1,10 +1,21 @@
-<mat-drawer-container hasBackdrop="false">
-    <mat-drawer sr-sra mode="side" opened disableClose>
-        <showroom-nav-list/>
-    </mat-drawer>
-    <mat-drawer-content>
-        <div sr-lra-host class="router-wrapper">
-            <router-outlet/>
-        </div>
-    </mat-drawer-content>
-</mat-drawer-container>
+<ng-container *ngIf="(vm$ | async) as vm">
+<div>
+    <mat-drawer-container [hasBackdrop]="vm.isSmall.matches">
+        <mat-drawer #drawer sr-sra [mode]="vm.isSmall.matches ? 'over' : 'side'"
+            [opened]="!vm.isSmall.matches" [disableClose]="!vm.isSmall.matches"
+            (openedChange)="hideButton$.next($event)">
+            <showroom-nav-list/>
+        </mat-drawer>
+        <mat-drawer-content>
+            <button *ngIf="vm.isSmall.matches && vm.isButtonShown" mat-fab color="accent"
+                @snBtnResizeIn @snBtnResizeOut (@snBtnResizeOut.done)="buttonGone($event)"
+                (click)="hideButton$.next(true)" class="sidenav-btn">
+                <mat-icon>left_panel_open</mat-icon>
+            </button>
+            <div sr-lra-host class="router-wrapper">
+                <router-outlet/>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>
+</ng-container>

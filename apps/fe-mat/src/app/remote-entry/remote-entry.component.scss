@@ -32,6 +32,10 @@ mat-drawer-container {
   position: relative;
   min-height: 100vh;
   background-color: transparent !important;
+
+  & > mat-drawer.mat-drawer-over {
+    background-color: rgba(map.get($sr-primary, 50), 0.9);
+  }
 }
 
 .router-wrapper {
@@ -44,4 +48,8 @@ mat-drawer-container {
   & > * {
     width: 100%;
   }
+}
+
+.sidenav-btn {
+  position: absolute !important;
 }

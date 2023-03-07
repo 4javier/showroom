@@ -1,10 +1,15 @@
-import { Component, Inject, Renderer2, ViewEncapsulation } from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
 import { LightRoutingAnimationHostDirective, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { BehaviorSubject, combineLatest, distinctUntilChanged, map, Observable } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { snBtnResizeIn, snBtnResizeOut } from '../animations';
+import { AnimationEvent } from '@angular/animations';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 
 @Component({
@@ -19,17 +24,44 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
   providers: [ MatIconRegistry ],
+  animations: [
+    shadowSlideLeftAnimation, lightSlideLeftAnimation,
+    snBtnResizeIn, snBtnResizeOut
+  ],
   host: { 'style': 'display: block' }
 })
 export class RemoteEntryComponent {
 
+  @ViewChild('drawer') drawer!: MatDrawer;
+
+  isSmall$: Observable<BreakpointState>;
+  hideButton$ = new BehaviorSubject<boolean>(false);
+  isButtonShown$ = this.hideButton$.pipe(
+    map(v => !v),
+    distinctUntilChanged()
+  );
+  vm$: Observable<{isSmall: BreakpointState; isButtonShown: boolean}>;
+  
   constructor(
-    @Inject(DOCUMENT) readonly document: Document,
     renderer: Renderer2,
+    breakpointObserver: BreakpointObserver,
     matIconRegistry: MatIconRegistry
   ) {
+
     addMaterialLinksToHead(renderer);
     matIconRegistry.setDefaultFontSetClass('material-symbols-outlined')
+
+    this.isSmall$ = breakpointObserver.observe('(max-width: 991px)')
+    this.vm$ = combineLatest({isSmall: this.isSmall$.pipe(), isButtonShown: this.isButtonShown$})
+  }
+
+  buttonGone(ev: AnimationEvent) {
+    if(ev.fromState !== 'void' && ev.toState === 'void') {
+      this.drawer.open()
+    }
+  }
+
+}
 
 const addMaterialLinksToHead = (renderer: Renderer2) => {
     const fontLink = renderer.createElement('link');
