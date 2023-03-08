@@ -4,9 +4,9 @@ import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
-import { LightRoutingAnimationHostDirective, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
+import { LightRoutingAnimationHostDirective, LightRoutingAnimationService, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, map, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, distinctUntilChanged, filter, map, Observable, switchMap, withLatestFrom } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { snBtnResizeIn, snBtnResizeOut } from '../animations';
 import { AnimationEvent } from '@angular/animations';
@@ -45,7 +45,8 @@ export class RemoteEntryComponent {
   constructor(
     renderer: Renderer2,
     breakpointObserver: BreakpointObserver,
-    matIconRegistry: MatIconRegistry
+    matIconRegistry: MatIconRegistry,
+    lras: LightRoutingAnimationService
   ) {
 
     addMaterialLinksToHead(renderer);
@@ -53,6 +54,10 @@ export class RemoteEntryComponent {
 
     this.isSmall$ = breakpointObserver.observe('(max-width: 991px)')
     this.vm$ = combineLatest({isSmall: this.isSmall$.pipe(), isButtonShown: this.isButtonShown$})
+    this.isSmall$.pipe(
+      filter(isSmall => !!isSmall.matches),
+      switchMap(() => lras.rendered$)
+    ).subscribe(() => this.drawer.close())
   }
 
   buttonGone(ev: AnimationEvent) {

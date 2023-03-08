@@ -1,8 +1,7 @@
 <mat-nav-list>
-      <a mat-list-item *ngFor="let link of links" (click)="null"
-      routerLinkActive #ref="routerLinkActive" [activated]="ref.isActive" [routerLink]="link.path">
-         <span>{{link.name}}</span>
-         <mat-icon>double_arrow</mat-icon>
-      </a>
+    <a mat-list-item *ngFor="let link of links" (click)="null" routerLinkActive #ref="routerLinkActive"
+        [activated]="ref.isActive" [routerLink]="link.path">
+        <span>{{link.name}}</span>
+        <mat-icon>double_arrow</mat-icon>
+    </a>
 </mat-nav-list>
-   

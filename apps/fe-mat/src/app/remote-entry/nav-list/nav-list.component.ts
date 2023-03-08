@@ -19,8 +19,8 @@ export type LinkListItem = {
 })
 export class NavListComponent {
   links: LinkListItem[] = [
-    {name: 'Home', path: 'home'},
-    {name: 'My Projects', path: 'projects'},
-    {name: 'My Articles', path: 'articles'}
+    { name: 'Home', path: 'home' },
+    { name: 'Projects', path: 'projects' },
+    { name: 'Articles', path: 'articles' }
   ]
 }
