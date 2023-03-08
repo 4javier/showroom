@@ -6,7 +6,7 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
 import { LightRoutingAnimationHostDirective, LightRoutingAnimationService, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, filter, map, Observable, switchMap, withLatestFrom } from 'rxjs';
+import { BehaviorSubject, combineLatest, distinctUntilChanged, filter, map, Observable, withLatestFrom } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { snBtnResizeIn, snBtnResizeOut } from '../animations';
 import { AnimationEvent } from '@angular/animations';
@@ -54,9 +54,9 @@ export class RemoteEntryComponent {
 
     this.isSmall$ = breakpointObserver.observe('(max-width: 991px)')
     this.vm$ = combineLatest({isSmall: this.isSmall$.pipe(), isButtonShown: this.isButtonShown$})
-    this.isSmall$.pipe(
-      filter(isSmall => !!isSmall.matches),
-      switchMap(() => lras.rendered$)
+    lras.rendered$.pipe(
+      withLatestFrom(this.isSmall$),
+      filter(([,isSmall]) => !!isSmall.matches),
     ).subscribe(() => this.drawer.close())
   }
 
