@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterOutlet } from '@angular/router';
 import { ShadowRoutingAnimationDirective, shadowSlideLeftAnimation } from '@showroom/shared/shadow-routing-animation'
-import { LightRoutingAnimationHostDirective, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
+import { LightRoutingAnimationHostDirective, LightRoutingAnimationService, lightSlideLeftAnimation } from '@showroom/shared/light-routing-animation'
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { ocBtnSlideInFromLeft, ocBtnSlideOutFromLeft } from '../animations';
-import { map, merge, startWith, Subject } from 'rxjs';
+import { filter, map, merge, startWith, Subject, withLatestFrom } from 'rxjs';
 import { AnimationEvent } from '@angular/animations';
 
 @Component({
@@ -33,7 +33,16 @@ export class RemoteEntryComponent {
   hideButton$ = new Subject<void>();
   isButtonShown$ = this.hideButton$.pipe(startWith(true));
 
-  constructor(private offcanvasService: NgbOffcanvas) {}
+  constructor(
+    private offcanvasService: NgbOffcanvas,
+    private lras: LightRoutingAnimationService
+  ) {
+    this.lras.rendered$.pipe(
+      withLatestFrom(this.offcanvasService.activeInstance),
+      map(([,offcanvas]) => offcanvas),
+      filter(Boolean),
+    ).subscribe(offcanvas => offcanvas.close())
+  }
 
 	openSidenav() {
 		const offcanvasRef = this.offcanvasService.open(
