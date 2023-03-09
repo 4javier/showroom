@@ -73,6 +73,13 @@ div.logo {
     align-items: center;
     justify-content: center;
 
+    .inner-circle {
+        transition: transform 0.25s;
+        transform-origin: center;
+        transform: scale(1);
+        will-change: transform;
+    }
+
     &:hover {
 
         .inner-circle,
