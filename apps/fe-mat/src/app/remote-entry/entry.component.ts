@@ -71,6 +71,7 @@ export class RemoteEntryComponent {
 const addMaterialLinksToHead = (renderer: Renderer2) => {
     const fontLink = renderer.createElement('link');
     const iconLink = renderer.createElement('link');
+    const testMatThemeLink = renderer.createElement('link');
 
     renderer.setAttribute(
       fontLink,
@@ -94,7 +95,20 @@ const addMaterialLinksToHead = (renderer: Renderer2) => {
       'stylesheet'
     );
 
+    renderer.setAttribute(
+      testMatThemeLink,
+      'href',
+      'data:text/css;charset=UTF-8,' + encodeURIComponent(`.mat-theme-loaded-marker {display: none}`)
+    );
+    renderer.setAttribute(
+      testMatThemeLink,
+      'rel',
+      'stylesheet'
+    );
+
     renderer.appendChild(document.head, fontLink);
     renderer.appendChild(document.head, iconLink);
+    renderer.appendChild(document.head, testMatThemeLink);
+
   }
 
