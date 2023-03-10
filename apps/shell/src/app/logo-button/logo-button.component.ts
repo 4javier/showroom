@@ -1,4 +1,4 @@
-import { Attribute, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,11 +18,5 @@ export class LogoButtonComponent {
     this._activated = activated;
     activated ? this.activating = false : null;
   }
-  
-  constructor(
-    private hostEl: ElementRef,
-    @Attribute('size') size: string
-  ) {
-    this.hostEl.nativeElement.style.setProperty('--sr-logo-button-size', size)
-  }
+ 
 }

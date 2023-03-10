@@ -1,6 +1,6 @@
 <div>
   <div class="header">
-    <a (click)="animateRouting('')"><h1 class="logo">My Showroom</h1></a>
+    <a class="sr-logo" (click)="animateRouting('')"><h1>My Showroom</h1></a>
     <p class="abstract">This project aims at being a minimalistic showcase <br>
       for a stack composed of a GIT monorepo managed by Nx <br>
       wrapping three Angular micro frontend modules federated by Webpack <br>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="btns-container" *ngIf="(activeRoute$ | async) as activeRoute">
-    <showroom-logo-button size="12rem" (click)="animateRouting('fe-mat/home')"
+    <showroom-logo-button (click)="animateRouting('fe-mat/home')"
       [activated]="activeRoute.url === 'fe-mat'">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.2 192.7">
           <defs>
@@ -51,7 +51,7 @@
       </svg>
     </showroom-logo-button>
 
-    <showroom-logo-button size="12rem" (click)="animateRouting('fe-bs/home')"
+    <showroom-logo-button (click)="animateRouting('fe-bs/home')"
       [activated]="activeRoute.url === 'fe-bs'">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <defs>
