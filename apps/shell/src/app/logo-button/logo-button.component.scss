@@ -1,20 +1,22 @@
-:host {
-    --sr-logo-button-size: 6rem;
-}
-
 :host(.activating) {
 
     div.logo {
-        feDropShadow {
-            transition: flood-opacity 0.25s;
-            flood-opacity: 0;
-        }
-
         .inner-circle,
         >svg:nth-of-type(2) {
+            transform-origin: center;
             transition: transform 0.25s;
-            transform: scale(1);
+            transform: scale(0.95);
         }
+
+        .inner-circle {
+            filter: url(#inset-shadow);
+        }
+
+        #inset-shadow>feFlood {
+            transition: flood-opacity 0.5s;
+            flood-opacity: 1;
+        }
+
     }
 }
 
@@ -26,18 +28,15 @@
         .inner-circle,
         >svg:nth-of-type(2) {
             transform-origin: center;
-            transition: transform 0.25s;
             transform: scale(0.95);
-            will-change: transform;
         }
 
         .inner-circle {
             filter: url(#inset-shadow);
         }
-
-        feDropShadow {
-            transition: flood-opacity 0.25s;
-            flood-opacity: 0;
+        
+        #inset-shadow>feFlood {
+            flood-opacity: 1;
         }
 
         .outer-circle-paths>path {
@@ -48,14 +47,8 @@
         }
 
         @keyframes dash {
-            0% {
-                stroke-dashoffset: 1;
-            }
-
-            50% {
-                filter: none;
-            }
-
+            0% { stroke-dashoffset: 1; }
+            50% { filter: none; }
             100% {
                 stroke-dashoffset: 0;
                 filter: drop-shadow(0 0 0.05rem #3F51B5);
@@ -66,6 +59,7 @@
 }
 
 div.logo {
+    
     width: var(--sr-logo-button-size);
     height: var(--sr-logo-button-size);
     position: relative;
@@ -77,28 +71,16 @@ div.logo {
         transition: transform 0.25s;
         transform-origin: center;
         transform: scale(1);
-        will-change: transform;
     }
 
-    &:hover {
-
-        .inner-circle,
-        >svg:nth-of-type(2) {
-            transition: transform 0.25s;
-            transform-origin: center;
-            transform: scale(1.1);
-            will-change: transform;
-        }
-
-        feDropShadow {
-            flood-opacity: 0.7;
-            transition: flood-opacity 0.25s;
-        }
+    #drop-shadow>feDropShadow {
+        transition: flood-opacity 0.25s;
+        flood-opacity: 1;
     }
 
-    &:active .inner-circle,
-    &:active>svg:nth-of-type(2) {
-        transform: scale(1);
+    #inset-shadow>feFlood {
+        transition: flood-opacity 0.5s;
+        flood-opacity: 0;
     }
 
     >svg {
@@ -124,19 +106,43 @@ div.logo {
             r: 40%;
         }
 
-        feDropShadow {
-            transition: flood-opacity 0.25s;
-        }
-
         &:nth-of-type(2) {
             // compute inscript square side with inner-circle-radius * √2
             max-width: calc(var(--sr-logo-button-size)*0.4*1.41421);
             max-height: calc(var(--sr-logo-button-size)*0.4*1.41421);
             transform-origin: center;
             transition: transform 0.25s;
-            will-change: transform;
         }
 
     }
+
+    &:hover {
+
+        .inner-circle,
+        >svg:nth-of-type(2) {
+            transition: transform 0.25s;
+            transform-origin: center;
+            transform: scale(1.1);
+        }
+
+    }
+
+    &:active {
+        
+        & .inner-circle,
+        &>svg:nth-of-type(2) {
+            transform: scale(1);
+        }
+
+        & .inner-circle {
+            filter: url(#drop-shadow);
+        }
+    
+        & #drop-shadow>feDropShadow {
+            transition: flood-opacity 0.25s;
+            flood-opacity: 0;
+        }
+    }
+
 
 }
