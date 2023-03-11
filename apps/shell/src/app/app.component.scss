@@ -1,23 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
 
-$background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,166,255,1) 42%, rgba(194,216,255,0) 75%); 
+$background-gradient: linear-gradient(153deg, rgba(117, 149, 255, 1) 0%, rgba(111, 166, 255, 1) 42%, rgba(194, 216, 255, 0) 75%);
 
 :host {
     display: block;
     position: relative;
+
     &:before {
-        content:"";
+        content: "";
         display: inline-block;
         position: absolute;
-        background: $background-gradient; 
+        background: $background-gradient;
         width: 120%;
-        top:0;
-        left:-75%;
+        top: 0;
+        left: -75%;
         bottom: 0;
         transform: skew(20deg, 0deg);
         z-index: -1;
     }
-    
+
+    --sr-logo-button-size-base: 12rem;
+
 }
 
 .header {
@@ -28,11 +31,13 @@ $background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,1
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem;
+
     @media(min-width: 576px) {
         padding-left: 2rem;
         padding-right: 2rem;
         padding-bottom: 2rem;
     }
+
     @media(min-width: 768px) {
         padding-left: 4rem;
         padding-right: 4rem;
@@ -46,9 +51,11 @@ $background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,1
         & h1 {
             font-family: 'Cinzel Decorative';
             font-size: 3rem;
+
             @media(min-width: 576px) {
                 font-size: 4rem;
             }
+
             @media(min-width: 992px) {
                 font-size: 5rem;
             }
@@ -58,6 +65,7 @@ $background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,1
     .abstract {
         flex-grow: 2;
         text-align: center;
+
         @media(min-width: 576px) {
             font-size: 1.2rem;
         }
@@ -67,14 +75,46 @@ $background-gradient: linear-gradient(153deg, rgba(117,149,255,1) 0%, rgba(111,1
 .btns-container {
     display: flex;
     justify-content: space-evenly;
-    --sr-logo-button-size: 6rem;
+    --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/2);
+
     @media(min-width: 576px) {
-      padding-bottom: 2rem;
-      --sr-logo-button-size: 8rem;
+        padding-bottom: 2rem;
+        --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/3*2);
     }
+
     @media(min-width: 768px) {
         padding-bottom: 4rem;
-        --sr-logo-button-size: 12rem;
+        --sr-logo-button-size: var(--sr-logo-button-size-base);
+    }
+
+    .btns-col {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+
+        &>showroom-logo-button {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        &>a {
+            margin-right: auto;
+            --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/4);
+
+            @media(min-width: 576px) {
+                margin-top: 1rem;
+                --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/3);
+            }
+
+            @media(min-width: 768px) {
+                --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/2);
+            }
+        }
+
+        &:last-of-type>a {
+            margin-right: 0;
+            margin-left: auto;
+        }
     }
 }
-
