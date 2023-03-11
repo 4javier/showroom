@@ -1,4 +1,4 @@
-<div class="logo" id="logoButton" (click)="activating = true">
+<div class="logo" id="logoButton">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
     <filter id="drop-shadow">
       <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="grey" />
@@ -6,9 +6,9 @@
     <filter id="inset-shadow">
       <feGaussianBlur stdDeviation="2" />
       <feComposite operator="out" in="SourceGraphic" result="inverse" />
-      <feFlood flood-color="black" flood-opacity='.95' result='color' />
-      <feComposite operator='in' in='color' in2='inverse' result='shadow' />
-      <feComposite operator='over' in='shadow' in2='SourceGraphic' />
+      <feFlood flood-color="black" flood-opacity=".95" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" />
     </filter>
     <circle class="outer-circle" />
     <g class="outer-circle-paths" fill="transparent">
