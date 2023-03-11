@@ -36,7 +36,9 @@
 :host { 
     @extend :root;
     @extend body;
-    --sr-modal-content-bg: var(--bs-light-rgb)};
+    --sr-modal-content-bg: var(--bs-light-rgb);
+    background-color: transparent;
+}
 
 .router-wrapper {
     min-height: 100%;
