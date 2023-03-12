@@ -4,6 +4,7 @@ import { LogoButtonComponent } from './logo-button/logo-button.component';
 import { ShadowRoutingAnimationService } from '@showroom/shared/shadow-routing-animation';
 import { filter, map, Observable, shareReplay } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { remoteUrls } from '../main';
 
 @Component({
   standalone: true,
@@ -15,7 +16,8 @@ import { AsyncPipe, NgIf } from '@angular/common';
 export class AppComponent {
 
   activeRoute$: Observable<{url: string}>;
-
+  remoteUrls = remoteUrls;
+  
   constructor(
     router: Router,
     private ras: ShadowRoutingAnimationService,

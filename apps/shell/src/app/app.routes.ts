@@ -10,13 +10,15 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'fe-bs',
-    loadChildren: () =>
-      loadRemoteModule('fe-bs', './Routes').then((m) => m.remoteRoutes),
+    loadChildren: () => 
+      loadRemoteModule('fe-bs', './Routes')
+        .then((m) => m.remoteRoutes)
   },
   {
     path: 'fe-mat',
     loadChildren: () =>
-      loadRemoteModule('fe-mat', './Routes').then((m) => m.remoteRoutes),
-  },
+      loadRemoteModule('fe-mat', './Routes')
+        .then((m) => m.remoteRoutes),
+  }
 
 ];
