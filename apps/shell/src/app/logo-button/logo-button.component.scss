@@ -2,7 +2,7 @@
 
     div.logo {
         .inner-circle,
-        >svg:nth-of-type(2) {
+        >svg:not(:first-of-type) {
             transform-origin: center;
             transition: transform 0.25s;
             transform: scale(0.95);
@@ -26,7 +26,7 @@
     div.logo {
 
         .inner-circle,
-        >svg:nth-of-type(2) {
+        >svg:not(:first-of-type) {
             transform-origin: center;
             transform: scale(0.95);
         }
@@ -106,7 +106,7 @@ div.logo {
             r: 40%;
         }
 
-        &:nth-of-type(2) {
+        &:not(:first-of-type) {
             // compute inscript square side with inner-circle-radius * √2
             max-width: calc(var(--sr-logo-button-size)*0.4*1.41421);
             max-height: calc(var(--sr-logo-button-size)*0.4*1.41421);
@@ -119,7 +119,7 @@ div.logo {
     &:hover {
 
         .inner-circle,
-        >svg:nth-of-type(2) {
+        >svg:not(:first-of-type) {
             transition: transform 0.25s;
             transform-origin: center;
             transform: scale(1.1);
@@ -130,7 +130,7 @@ div.logo {
     &:active {
         
         & .inner-circle,
-        &>svg:nth-of-type(2) {
+        &>svg:not(:first-of-type) {
             transform: scale(1);
         }
 
