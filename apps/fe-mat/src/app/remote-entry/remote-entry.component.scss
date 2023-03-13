@@ -28,6 +28,7 @@ $sr-theme: mat.define-light-theme(
 
 @include mat.sidenav-theme($sr-theme);
 @include mat.fab-theme($sr-theme);
+@include mat.icon-button-theme($sr-theme);
 @include mat.icon-theme($sr-theme);
 @include mat.card-theme($sr-theme);
 @include mat.progress-spinner-theme($sr-theme);
