@@ -1,6 +1,6 @@
 <nav ngbNav [activeId]="activeRoute$ | async" class="nav-pills" orientation="vertical">
     <div [ngbNavItem]="link.path" *ngFor="let link of links">
-        <a ngbNavLink [routerLink]="['/fe-bs', link.path]" class="d-flex justify-content-between">
+        <a ngbNavLink [routerLink]="[link.path]" class="d-flex justify-content-between">
             <span>{{ link.name }}</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="sr-bs-icon"
                 viewBox="0 0 448 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
