@@ -57,23 +57,6 @@
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
-        },
-        "development-local": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
-          "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true,
-          "assets": [
-            "apps/shell/src/favicon.ico",
-            "apps/shell/src/assets",
-            {
-              "glob": "remote-urls.json",
-              "input": "apps/shell/src/assets-local/",
-              "output": "/assets/"
-            }
-          ]
         }
       },
       "defaultConfiguration": "production"
@@ -85,13 +68,14 @@
           "browserTarget": "shell:build:production"
         },
         "development": {
-          "browserTarget": "shell:build:development-local"
+          "browserTarget": "shell:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
         "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "publicHost": "http://localhost:4200",
+        "pathToManifestFile": "apps/shell/src/assets-local/module-federation.manifest.json"
       }
     },
     "extract-i18n": {

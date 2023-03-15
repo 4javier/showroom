@@ -31,7 +31,7 @@ jobs:
 
       - name: Add remotes address file to assets
         run: |
-          cat << EOF > $HOME/work/showroom/showroom/.vercel/output/static/assets/remote-urls.json
+          cat << EOF > $HOME/work/showroom/showroom/.vercel/output/static/assets/module-federation.manifest.json
           {
             "fe-mat": "https://showroom-fe-mat.vercel.app/",
             "fe-bs": "https://showroom-fe-bs.vercel.app/"
