@@ -6,7 +6,7 @@ import { LightRoutingAnimationService } from './light-routing-animation.service'
 
 @Directive({
   selector: '[sr-lra-host]',
-  standalone: true
+  standalone: true,
 })
 export class LightRoutingAnimationHostDirective {
 
@@ -15,10 +15,11 @@ export class LightRoutingAnimationHostDirective {
   @HostListener('@lightSlideLeftAnimation.done', ['$event'])
   manageDoneCallback(event: AnimationEvent) {
     if(event.toState === 'leaving') {
+      this.lras.rendered$.next(false);
       this.animationTrigger = 'entering'
     }
     else if(event.toState === 'entering') {
-      this.lras.rendered$.next();
+      this.lras.rendered$.next(true);
     }
   }
   

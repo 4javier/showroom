@@ -23,7 +23,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  providers: [ MatIconRegistry ],
+  providers: [ MatIconRegistry, LightRoutingAnimationService ],
   animations: [
     shadowSlideLeftAnimation, lightSlideLeftAnimation,
     snBtnResizeIn, snBtnResizeOut
@@ -55,6 +55,7 @@ export class RemoteEntryComponent {
     this.isSmall$ = breakpointObserver.observe('(max-width: 991px)')
     this.vm$ = combineLatest({isSmall: this.isSmall$.pipe(), isButtonShown: this.isButtonShown$})
     lras.rendered$.pipe(
+      filter(Boolean),
       withLatestFrom(this.isSmall$),
       filter(([,isSmall]) => !!isSmall.matches),
     ).subscribe(() => this.drawer.close())

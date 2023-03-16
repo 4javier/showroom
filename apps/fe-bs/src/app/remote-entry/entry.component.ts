@@ -20,6 +20,7 @@ import { AnimationEvent } from '@angular/animations';
   templateUrl: 'remote-entry.component.html',
   styleUrls: ['remote-entry.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
+  providers: [LightRoutingAnimationService],
   animations: [
     shadowSlideLeftAnimation, lightSlideLeftAnimation,
     ocBtnSlideInFromLeft, ocBtnSlideOutFromLeft
@@ -38,6 +39,7 @@ export class RemoteEntryComponent {
     private lras: LightRoutingAnimationService
   ) {
     this.lras.rendered$.pipe(
+      filter(Boolean),
       withLatestFrom(this.offcanvasService.activeInstance),
       map(([,offcanvas]) => offcanvas),
       filter(Boolean),

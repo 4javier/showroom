@@ -1,4 +1,4 @@
-<div class="container-fluid position-relative vh-100" #container>
+<div sr-lra-host sr-sra class="container-fluid position-relative vh-100" #container>
     <div class="d-lg-none row position-absolute">
         <div class="col-2 p-0">
             <button *ngIf="isButtonShown$ | async"
@@ -13,10 +13,10 @@
         </div>
     </div>
     <div class="row">
-        <div sr-sra class="d-none d-lg-block col-2 p-0 sr-sidebar">
+        <div class="d-none d-lg-block col-2 p-0 sr-sidebar">
             <showroom-nav-list />
         </div>
-        <div sr-lra-host class="router-wrapper col text-center">
+        <div class="router-wrapper col text-center">
             <router-outlet />
         </div>
     </div>

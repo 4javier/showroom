@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LightRoutingAnimationService {
 
-  rendered$ = new Subject<void>()
+  rendered$ = new ReplaySubject<boolean>();
   
-  constructor() {}
 }
