@@ -57,6 +57,23 @@
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
+        },
+        "development-local": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,
+          "assets": [
+            "apps/shell/src/favicon.ico",
+            "apps/shell/src/assets",
+            {
+              "glob": "module-federation.manifest.json",
+              "input": "apps/shell/src/assets-local/",
+              "output": "/assets/"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -68,7 +85,7 @@
           "browserTarget": "shell:build:production"
         },
         "development": {
-          "browserTarget": "shell:build:development"
+          "browserTarget": "shell:build:development-local"
         }
       },
       "defaultConfiguration": "development",
