@@ -1,11 +1,10 @@
 import { setRemoteDefinitions } from '@nrwl/angular/mf';
-
-export let remoteUrls: Record<string, string> = {};
+import { setRemoteUrls } from './app/app.remote-provider';
 
 fetch('/assets/module-federation.manifest.json')
   .then((res) => res.json())
   .then((definitions) => {
-    remoteUrls = definitions;
+    setRemoteUrls(definitions);
     return setRemoteDefinitions(definitions);
   })
   .then(() => import('./bootstrap').catch((err) => console.error(err)));

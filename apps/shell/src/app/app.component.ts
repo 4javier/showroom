@@ -1,10 +1,12 @@
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, Inject, InjectionToken } from '@angular/core';
 import { LogoButtonComponent } from './logo-button/logo-button.component';
 import { ShadowRoutingAnimationService } from '@showroom/shared/shadow-routing-animation';
 import { filter, map, Observable, shareReplay } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { remoteUrls } from '../main';
+import { remoteUrls } from './app.remote-provider';
+
+export const REMOTE_URLS = new InjectionToken<Record<string, string>>('remote_urls', {factory: () => ({...remoteUrls})});
 
 @Component({
   standalone: true,
@@ -16,9 +18,9 @@ import { remoteUrls } from '../main';
 export class AppComponent {
 
   activeRoute$: Observable<{url: string}>;
-  remoteUrls = remoteUrls;
-  
+
   constructor(
+    @Inject(REMOTE_URLS) public remoteUrls: Record<string, string>,
     router: Router,
     private ras: ShadowRoutingAnimationService,
   ) {
