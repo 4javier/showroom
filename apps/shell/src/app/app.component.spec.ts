@@ -15,6 +15,7 @@ let harness: RouterTestingHarness;
 
 @Component({})
 class StubComponent {}
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
