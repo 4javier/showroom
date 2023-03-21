@@ -32,6 +32,7 @@ describe('ArticlesComponent', () => {
 
   it('should start showing loading template', () => {
     expect(fixture.debugElement.queryAll(By.css('#placeholder'))).toHaveLength(1);
+    expect(fixture.debugElement.queryAll(By.css('showroom-bs-carousel'))).toHaveLength(1);
   });
 
   it('should show carousel on fetcher emission', () => {
