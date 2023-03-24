@@ -1,6 +1,6 @@
 <div sr-lra-item>
     <ng-container *ngIf="articleSlides$ | async as slides; else loading">
-        <showroom-carousel @fadeIn [slides]="slides"/>
+        <showroom-mat-carousel @fadeIn [slides]="slides"/>
     </ng-container>
-    <ng-template #loading><showroom-carousel [isLoading]="true"/></ng-template>
+    <ng-template #loading><showroom-mat-carousel [isLoading]="true" id='placeholder'/></ng-template>
 </div>
