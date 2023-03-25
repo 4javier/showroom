@@ -54,7 +54,9 @@ export class MatCarouselComponent implements OnDestroy {
     combineLatest([this.paused$, this.stopped$])
       .pipe(
         switchMap(([paused, stopped]) =>
-          !!paused || !!stopped ? NEVER : interval(3000)
+          !!paused || !!stopped
+            ? NEVER
+            : interval(3000)
         ),
         takeUntil(this.destroy$)
       )
@@ -70,8 +72,9 @@ export class MatCarouselComponent implements OnDestroy {
   }
 
   cycleSlides = () => {
-    if (this.focusedIndex === this.slides.length - 1) this.focusedIndex = 0;
-    else this.focusedIndex++;
+    if (this.focusedIndex === this.slides.length - 1) {
+      this.focusedIndex = 0;
+    } else this.focusedIndex++;
   };
 
   pauseOn() {
