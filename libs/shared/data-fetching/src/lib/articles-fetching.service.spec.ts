@@ -36,7 +36,7 @@ const slideStub1: SlideData = {
   image: 'img1',
   link: 'url1',
   origin: 'assets/devto-badge.svg',
-  subtitle: undefined
+  subtitle: undefined,
 };
 const slideStub2: SlideData = {
   title: 'title2',
@@ -72,5 +72,4 @@ describe('ArticlesFetchingService', () => {
     );
     discardPeriodicTasks();
   }));
-
 });

@@ -5,6 +5,7 @@ import { filter } from 'rxjs';
 import { LightRoutingAnimationService } from './light-routing-animation.service';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[sr-lra-host]',
   standalone: true,
 })

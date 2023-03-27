@@ -3,6 +3,7 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 import { ShadowRoutingAnimationService } from './shadow-routing-animation.service';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[sr-sra]',
   standalone: true
 })
