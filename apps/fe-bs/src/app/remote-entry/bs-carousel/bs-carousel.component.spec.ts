@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BsCarouselComponent } from './bs-carousel.component';
 
@@ -8,7 +9,7 @@ describe('BsCarouselComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BsCarouselComponent],
+      imports: [BsCarouselComponent, NoopAnimationsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(BsCarouselComponent);

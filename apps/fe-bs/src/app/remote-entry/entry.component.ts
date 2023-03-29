@@ -27,7 +27,6 @@ import {
   startWith,
   Subject,
   takeUntil,
-  tap,
   withLatestFrom,
 } from 'rxjs';
 import { AnimationEvent } from '@angular/animations';
