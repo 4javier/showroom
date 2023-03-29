@@ -1,10 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, Directive, Renderer2 } from '@angular/core';
+import { Component, Directive } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
   flush,
-  inject,
   TestBed,
   tick,
 } from '@angular/core/testing';

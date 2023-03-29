@@ -1,7 +1,7 @@
 <ng-container *ngIf="(vm$ | async) as vm">
 <div>
-    <mat-drawer-container sr-lra-host sr-sra [hasBackdrop]="vm.isSmall">
-        <mat-drawer #drawer [mode]="vm.isSmall ? 'over' : 'side'"
+    <mat-drawer-container sr-sra sr-lra-host  [hasBackdrop]="vm.isSmall">
+        <mat-drawer [@.disabled]="!vm.isSmall" #drawer [mode]="vm.isSmall ? 'over' : 'side'"
             [opened]="!vm.isSmall" [disableClose]="!vm.isSmall"
             (openedChange)="hideButton$.next($event)">
             <showroom-nav-list/>
