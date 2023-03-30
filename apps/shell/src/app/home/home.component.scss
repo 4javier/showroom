@@ -1,3 +1,32 @@
-p {
-    text-align: center;
+h1,
+h2 {
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: auto;
+
+  & > div {
+    display: flex;
+    width: 70%;
+    min-height: 10rem;
+    padding: 1rem;
+    gap: 4rem;
+    margin: 1rem;
+    align-items: center;
+
+    &:nth-child(even) {
+      align-self: flex-end;
+    }
+
+    & > h2 {
+      flex-basis: 85%;
+    }
+    & > div {
+      flex-basis: 15%;
+    }
+  }
 }
