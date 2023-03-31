@@ -1,32 +1,105 @@
 h1,
 h2 {
   text-align: center;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 }
 
 #container {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 75vw;
   margin: auto;
 
-  & > div {
-    display: flex;
+  & > section {
+    perspective: 1000px;
     width: 70%;
-    min-height: 10rem;
-    padding: 1rem;
-    gap: 4rem;
-    margin: 1rem;
-    align-items: center;
+    transition: transform 250ms, box-shadow 250ms;
+
+    &::before {
+      content: '';
+      transform-origin: bottom;
+      transition: transform 250ms, box-shadow 250ms;
+      background-color: rgba(96, 96, 96, 0.2);
+      display: flex;
+      width: 100%;
+      min-height: 8rem;
+      padding: 1rem;
+      margin: 1rem;
+      position: absolute;
+      z-index: -1;
+    }
+
+    &:nth-child(odd) {
+      align-self: flex-start;
+      justify-content: flex-start;
+
+      &::before {
+        transform: rotateX(60deg) skewX(-10deg);
+        box-shadow: -1rem -1rem 2rem rgba(96, 96, 96, 0.4);
+      }
+
+      & > div {
+        transform: rotateX(60deg) skewX(-10deg);
+      }
+
+      &:hover::before {
+        transform: rotateX(80deg) skewX(40deg);
+        box-shadow: 0 -2rem 2rem rgba(96, 96, 96, 0.4);
+      }
+    }
 
     &:nth-child(even) {
       align-self: flex-end;
+      justify-content: flex-end;
+
+      &::before {
+        transform: rotateX(60deg) skewX(10deg);
+        box-shadow: 1rem -1rem 2rem rgba(96, 96, 96, 0.4);
+      }
+
+      & > div {
+        transform: rotateX(60deg) skewX(10deg);
+      }
+
+      &:hover::before {
+        transform: rotateX(80deg) skewX(-40deg);
+        box-shadow: 0 -2rem 2rem rgba(96, 96, 96, 0.4);
+      }
     }
 
-    & > h2 {
-      flex-basis: 85%;
+    &:hover {
+      & > div {
+        transform: none;
+      }
+
+      &::before {
+        background-color: rgba(96, 96, 96, 0.4);
+      }
     }
+
     & > div {
-      flex-basis: 15%;
+      display: flex;
+      width: 100%;
+      min-height: 8rem;
+      padding: 1rem;
+      gap: 2rem;
+      margin: 1rem;
+      align-items: center;
+      background-color: rgba(245, 245, 245, 0.5);
+      transition: transform 250ms, box-shadow 250ms;
+      transform-origin: bottom;
+
+      & > h2 {
+        flex-basis: 85%;
+      }
+
+      & > div {
+        flex-basis: 15%;
+        transform: none;
+      }
     }
   }
 }
