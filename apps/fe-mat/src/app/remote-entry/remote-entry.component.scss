@@ -1,30 +1,11 @@
 @use '@angular/material' as mat;
 @use 'sass:map';
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@300;600&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined);
+@import 'sr-mat-themes';
 
 @include mat.core();
-
-$sr-primary: mat.define-palette(mat.$indigo-palette, 500, 200, 800, 900);
-$sr-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-$sr-light-background-edits: (
-  card: rgba(map.get($sr-primary, 50), 0.3),
-  dialog: rgba(map.get($sr-primary, 50), 0.3),
-  raised-button: rgba(map.get($sr-primary, 50), 0.3),
-);
-mat.$light-theme-background-palette: map.merge(mat.$light-theme-background-palette, $sr-light-background-edits);
-
-$sr-theme: mat.define-light-theme(
-  (color:
-    (
-      primary: $sr-primary,
-      accent: $sr-accent,
-    ),
-      typography: mat.define-typography-config(),
-      density: 0,
-  )
-);
 
 @include mat.sidenav-theme($sr-theme);
 @include mat.fab-theme($sr-theme);
@@ -33,9 +14,12 @@ $sr-theme: mat.define-light-theme(
 @include mat.card-theme($sr-theme);
 @include mat.progress-spinner-theme($sr-theme);
 @include mat.list-theme($sr-theme);
+@include mat.typography-hierarchy($sr-theme);
 
-
-
+:host {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
 
 mat-drawer-container {
   position: relative;
@@ -51,7 +35,6 @@ mat-drawer-container {
   display: flex;
   min-height: 100%;
   justify-content: center;
-  padding-top: 6rem;
   flex-wrap: wrap;
 
   & > * {
@@ -61,4 +44,21 @@ mat-drawer-container {
 
 .sr-sidenav-toggle-btn {
   position: absolute !important;
+}
+
+.sr-home-header {
+  font-family: 'Roboto Serif';
+  text-align: center;
+  margin-bottom: 3rem;
+
+  & > .sr-home-title {
+    font-size: xxx-large;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+  }
+
+  & > .sr-home-subtitle {
+    font-size: large;
+    font-weight: 600;
+  }
 }

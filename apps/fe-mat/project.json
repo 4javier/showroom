@@ -20,6 +20,9 @@
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/fe-mat/webpack.config.js"
+        },
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/fe-mat/src/themes"]
         }
       },
       "configurations": {
