@@ -34,7 +34,7 @@ import { AnimationEvent } from '@angular/animations';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 
 export const FONT_REF =
-  'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap';
+  'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Roboto+Serif:wght@300;600&display=swap';
 export const ICON_REF =
   'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined';
 export const TEST_MAT_THEME_REF =

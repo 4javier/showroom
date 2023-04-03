@@ -1,6 +1,14 @@
 <div sr-lra-item>
-    <ng-container *ngIf="repoSlides$ | async as slides; else loading">
-        <showroom-mat-carousel @fadeIn [slides]="slides"/>
-    </ng-container>
-    <ng-template #loading><showroom-mat-carousel [isLoading]="true" id="placeholder"/></ng-template>
+  <div class="sr-home-header">
+    <p class="sr-home-title">My projects</p>
+    <p class="sr-home-subtitle">
+      Personal projects source code publicly available
+    </p>
+  </div>
+  <ng-container *ngIf="repoSlides$ | async as slides; else loading">
+    <showroom-mat-carousel @fadeIn [slides]="slides" />
+  </ng-container>
+  <ng-template #loading>
+    <showroom-mat-carousel [isLoading]="true" id="placeholder" />
+  </ng-template>
 </div>
