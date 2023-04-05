@@ -1,8 +1,16 @@
 <div sr-lra-item class="row justify-content-center">
-	<div class="col-8">
-		<ng-container *ngIf="articleSlides$ | async as slides; else loading">
-			<showroom-bs-carousel [slides]="slides"/>
-		</ng-container>
-		<ng-template #loading><showroom-bs-carousel [isLoading]="true" id='placeholder'/></ng-template>
-	</div>
+  <div class="sr-home-header">
+    <p class="sr-home-title">My articles</p>
+    <p class="sr-home-subtitle">
+      The articles I wrote about various software development topics
+    </p>
+  </div>
+  <div class="col-8">
+    <ng-container *ngIf="articleSlides$ | async as slides; else loading">
+      <showroom-bs-carousel [slides]="slides" />
+    </ng-container>
+    <ng-template #loading
+      ><showroom-bs-carousel [isLoading]="true" id="placeholder"
+    /></ng-template>
+  </div>
 </div>
