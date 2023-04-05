@@ -9,3 +9,11 @@
 mat-grid-tile {
   background-color: mat.get-color-from-palette($sr-primary, 500);
 }
+
+mat-grid-tile-header {
+  @media (max-width: 991px) {
+    font-size: medium;
+  }
+  font-size: large;
+  font-weight: 500;
+}
