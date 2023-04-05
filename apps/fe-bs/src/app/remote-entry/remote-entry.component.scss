@@ -1,80 +1,95 @@
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
 
-@import "bootstrap/scss/root";
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/type";
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
 //@import "bootstrap/scss/images";
-@import "bootstrap/scss/containers";
-@import "bootstrap/scss/grid";
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/transitions";
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/transitions';
 //@import "bootstrap/scss/dropdown";
 //@import "bootstrap/scss/nav";
 //@import "bootstrap/scss/navbar";
-//@import "bootstrap/scss/card";
+@import "bootstrap/scss/card";
 //@import "bootstrap/scss/badge";
 //@import "bootstrap/scss/progress";
 //@import "bootstrap/scss/close";
 //@import "bootstrap/scss/tooltip";
 //@import "bootstrap/scss/popover";
-@import "bootstrap/scss/carousel";
+@import 'bootstrap/scss/carousel';
 //@import "bootstrap/scss/spinners";
-@import "bootstrap/scss/offcanvas";
+@import 'bootstrap/scss/offcanvas';
 //@import "bootstrap/scss/placeholders";
 
 // Helpers
-@import "bootstrap/scss/helpers";
+@import 'bootstrap/scss/helpers';
 
 // Utilities
-@import "bootstrap/scss/utilities/api";
+@import 'bootstrap/scss/utilities/api';
 // scss-docs-end import-stack
 
-:host { 
-    @extend :root;
-    @extend body;
-    --sr-modal-content-bg: var(--bs-light-rgb);
-    background-color: transparent;
+:host {
+  @extend :root;
+  @extend body;
+  --sr-modal-content-bg: var(--bs-light-rgb);
+  background-color: transparent;
 }
 
 .router-wrapper {
-    min-height: 100%;
-    padding-top: 6rem;
+  min-height: 100%;
 }
 
 .sr-sidebar {
-    z-index: $zindex-offcanvas;
+  z-index: $zindex-offcanvas;
 }
 
 .sr-offcanvas-panel {
-    position: absolute;
-    padding: 0;
-    border-top-right-radius: var(--bs-border-radius-lg);
-    border-bottom-right-radius: var(--bs-border-radius-lg);
-    min-height: 100vh;
-    max-width: 40vw;
-    @include media-breakpoint-up(sm) { 
-        max-width: 30vw;
-    }
-    background-color: rgba(var(--sr-modal-content-bg), 0.9);
+  position: absolute;
+  padding: 0;
+  border-top-right-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+  min-height: 100vh;
+  max-width: 40vw;
+  @include media-breakpoint-up(sm) {
+    max-width: 30vw;
+  }
+  background-color: rgba(var(--sr-modal-content-bg), 0.9);
 }
 
 .sr-sidenav-toggle-btn {
-    display: flex;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  display: flex;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .sr-bs-icon {
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-    align-self: center;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  align-self: center;
+}
+
+.sr-home-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  & > .sr-home-title {
+    font-size: xxx-large;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+  }
+
+  & > .sr-home-subtitle {
+    font-size: large;
+    font-weight: 600;
+  }
 }
 
 .carousel-inner {
-    border-radius: var(--bs-border-radius);
+  border-radius: var(--bs-border-radius);
 }
