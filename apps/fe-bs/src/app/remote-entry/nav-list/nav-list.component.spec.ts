@@ -30,7 +30,7 @@ describe('NavListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should detect home as active route`, () => {
+  it(`should detect home as active route in remote mode`, () => {
     const navStart = new NavigationStart(1, '/fe-bs/home');
     const navEnd = new NavigationEnd(1, '/fe-bs/home', '/fe-bs/home');
     _events$.next(navStart);
@@ -38,13 +38,27 @@ describe('NavListComponent', () => {
 
     testScheduler.run(({ expectObservable }) => {
       expectObservable(component.activeRoute$).toBe('(ab)', {
-        a: undefined,
+        a: '',
         b: 'home',
       });
     });
   });
 
-  it(`should detect articles as active route`, () => {
+  it(`should detect home as active route in standalone mode`, () => {
+    const navStart = new NavigationStart(1, '/home');
+    const navEnd = new NavigationEnd(1, '/home', '/home');
+    _events$.next(navStart);
+    _events$.next(navEnd);
+
+    testScheduler.run(({ expectObservable }) => {
+      expectObservable(component.activeRoute$).toBe('(ab)', {
+        a: '',
+        b: 'home',
+      });
+    });
+  });
+
+  it(`should detect articles as active route in remote mode`, () => {
     const navStart = new NavigationStart(1, '/fe-bs/articles');
     const navEnd = new NavigationEnd(1, '/fe-bs/articles', '/fe-bs/articles');
     _events$.next(navStart);
@@ -52,13 +66,27 @@ describe('NavListComponent', () => {
 
     testScheduler.run(({ expectObservable }) => {
       expectObservable(component.activeRoute$).toBe('(ab)', {
-        a: undefined,
+        a: '',
         b: 'articles',
       });
     });
   });
 
-  it(`should detect projects as active route`, () => {
+  it(`should detect articles as active route in standalone mode`, () => {
+    const navStart = new NavigationStart(1, '/articles');
+    const navEnd = new NavigationEnd(1, '/articles', '/articles');
+    _events$.next(navStart);
+    _events$.next(navEnd);
+
+    testScheduler.run(({ expectObservable }) => {
+      expectObservable(component.activeRoute$).toBe('(ab)', {
+        a: '',
+        b: 'articles',
+      });
+    });
+  });
+
+  it(`should detect projects as active route in remote mode`, () => {
     const navStart = new NavigationStart(1, '/fe-bs/projects');
     const navEnd = new NavigationEnd(1, '/fe-bs/projects', '/fe-bs/projects');
     _events$.next(navStart);
@@ -66,7 +94,21 @@ describe('NavListComponent', () => {
 
     testScheduler.run(({ expectObservable }) => {
       expectObservable(component.activeRoute$).toBe('(ab)', {
-        a: undefined,
+        a: '',
+        b: 'projects',
+      });
+    });
+  });
+
+  it(`should detect projects as active route in standalone mode`, () => {
+    const navStart = new NavigationStart(1, '/projects');
+    const navEnd = new NavigationEnd(1, '/projects', '/projects');
+    _events$.next(navStart);
+    _events$.next(navEnd);
+
+    testScheduler.run(({ expectObservable }) => {
+      expectObservable(component.activeRoute$).toBe('(ab)', {
+        a: '',
         b: 'projects',
       });
     });
