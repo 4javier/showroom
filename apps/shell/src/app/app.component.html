@@ -15,6 +15,7 @@
   <div class="btns-container" *ngIf="activeRoute$ | async as activeRoute">
     <div class="btns-col">
       <showroom-logo-button
+        title="Open Material frontend as remote"
         (click)="animateRouting('fe-mat/home')"
         [activated]="activeRoute.url === 'fe-mat'"
       >
@@ -42,7 +43,6 @@
               }
             </style>
           </defs>
-          <title>material</title>
           <g id="Layer_2" data-name="Layer 2">
             <g id="Layer_1-2" data-name="Layer 1">
               <polygon
@@ -71,7 +71,10 @@
       </showroom-logo-button>
 
       <a [href]="remoteUrls['fe-mat'] + '/home'" target="_blank">
-        <showroom-logo-button [noStuck]="true">
+        <showroom-logo-button
+          [noStuck]="true"
+          title="Open Material frontend as standalone app in new tab"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.2 192.7">
             <defs>
               <style>
@@ -96,7 +99,6 @@
                 }
               </style>
             </defs>
-            <title>material</title>
             <g id="Layer_2" data-name="Layer 2">
               <g id="Layer_1-2" data-name="Layer 1">
                 <polygon
@@ -138,6 +140,7 @@
 
     <div class="btns-col">
       <showroom-logo-button
+        title="Open Bootstrap frontend as remote"
         (click)="animateRouting('fe-bs/home')"
         [activated]="activeRoute.url === 'fe-bs'"
       >
@@ -179,7 +182,10 @@
       </showroom-logo-button>
 
       <a [href]="remoteUrls['fe-bs'] + '/home'" target="_blank">
-        <showroom-logo-button [noStuck]="true">
+        <showroom-logo-button
+          [noStuck]="true"
+          title="Open Bootstrap frontend as standalone app in new tab"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <defs>
               <linearGradient id="a">
