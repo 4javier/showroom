@@ -1,0 +1,79 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/reboot";
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sr-tile-cut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 15rem;
+  @media (max-width: 991px) {
+    box-shadow: inset 0 0 0.3rem black;
+  }
+  box-shadow: inset 0 0 0.4rem black;
+
+  & > .sr-tile-card {
+    width: 97%;
+    height: 95%;
+    perspective: 60rem;
+
+    & > .sr-tile-card-header {
+      @media (max-width: 991px) {
+        font-size: medium;
+      }
+      font-size: large;
+      font-weight: bold;
+    }
+
+    & > .card-body {
+      transition: transform 500ms;
+      transform-style: preserve-3d;
+
+      & > div {
+        position: absolute;
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.sr-logo-face {
+          background-color: cornflowerblue;
+
+          &::ng-deep > svg {
+            width: 30%;
+          }
+        }
+
+        &.sr-text-face {
+          background-color: sandybrown;
+          transform: rotateY(180deg);
+          display: flex;
+
+          &::ng-deep > span {
+            text-align: center;
+            @media (max-width: 991px) {
+              font-size: medium;
+              padding: 0.5rem;
+            }
+            font-size: large;
+            padding: 1rem;
+          }
+        }
+      }
+
+      &:hover {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}

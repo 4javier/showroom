@@ -1,0 +1,15 @@
+<div class="sr-tile-cut rounded">
+  <div class="card sr-tile-card border-0">
+    <div class="card-header sr-tile-card-header">
+      <ng-content select="span[title]"></ng-content>
+    </div>
+    <div class="card-body position-relative p-0 f6">
+      <div class="sr-logo-face rounded-bottom">
+        <ng-content select="svg"></ng-content>
+      </div>
+      <div class="sr-text-face rounded-bottom">
+        <ng-content select="span[content]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
