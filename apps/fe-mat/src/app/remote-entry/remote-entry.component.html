@@ -1,21 +1,33 @@
-<ng-container *ngIf="(vm$ | async) as vm">
-<div>
-    <mat-drawer-container sr-sra sr-lra-host  [hasBackdrop]="vm.isSmall">
-        <mat-drawer [@.disabled]="!vm.isSmall" #drawer [mode]="vm.isSmall ? 'over' : 'side'"
-            [opened]="!vm.isSmall" [disableClose]="!vm.isSmall"
-            (openedChange)="hideButton$.next($event)">
-            <showroom-nav-list/>
-        </mat-drawer>
-        <mat-drawer-content>
-            <button *ngIf="vm.isSmall && vm.isButtonShown" mat-fab color="accent"
-                @snBtnResizeIn @snBtnResizeOut (@snBtnResizeOut.done)="buttonGone($event)"
-                (click)="hideButton$.next(true)" class="sr-sidenav-toggle-btn">
-                <mat-icon>left_panel_open</mat-icon>
-            </button>
-            <div class="router-wrapper">
-                <router-outlet/>
-            </div>
-        </mat-drawer-content>
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="entry-container">
+    <button
+      *ngIf="vm.isSmall && vm.isButtonShown"
+      mat-fab
+      color="accent"
+      @snBtnResizeIn
+      @snBtnResizeOut
+      (@snBtnResizeOut.done)="buttonGone($event)"
+      (click)="hideButton$.next(true)"
+      class="sr-sidenav-toggle-btn"
+    >
+      <mat-icon>left_panel_open</mat-icon>
+    </button>
+    <mat-drawer-container sr-sra sr-lra-host [hasBackdrop]="vm.isSmall">
+      <mat-drawer
+        [@.disabled]="!vm.isSmall"
+        #drawer
+        [mode]="vm.isSmall ? 'over' : 'side'"
+        [opened]="!vm.isSmall"
+        [disableClose]="!vm.isSmall"
+        (openedChange)="hideButton$.next($event)"
+      >
+        <showroom-nav-list />
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="router-wrapper">
+          <router-outlet />
+        </div>
+      </mat-drawer-content>
     </mat-drawer-container>
-</div>
+  </div>
 </ng-container>
