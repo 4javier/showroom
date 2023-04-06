@@ -2,6 +2,7 @@
 import {
   Component,
   ElementRef,
+  Injector,
   OnDestroy,
   ViewChild,
   ViewEncapsulation,
@@ -59,14 +60,15 @@ export class RemoteEntryComponent implements OnDestroy {
   hideButton$ = new Subject<boolean>();
   isButtonShown$ = this.hideButton$.pipe(
     startWith(false),
-    map((v) => !v),
+    map((v) => !v)
   );
 
   destroy$ = new ReplaySubject<void>();
 
   constructor(
     private offcanvasService: NgbOffcanvas,
-    private lras: LightRoutingAnimationService
+    private lras: LightRoutingAnimationService,
+    private injector: Injector
   ) {
     this.lras.rendered$
       .pipe(
@@ -85,6 +87,7 @@ export class RemoteEntryComponent implements OnDestroy {
         container: this.container.nativeElement,
         scroll: true,
         panelClass: 'sr-offcanvas-panel',
+        injector: this.injector
       })
       .hidden.subscribe(() => this.hideButton$.next(false));
   }
