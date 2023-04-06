@@ -16,8 +16,14 @@
         "tsConfig": "apps/fe-bs/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/fe-bs/src/favicon.ico", "apps/fe-bs/src/assets"],
-        "styles": ["apps/fe-bs/src/styles.scss"],
+        "styles": [
+          "apps/fe-bs/src/styles/styles.scss",
+          "apps/fe-bs/src/styles/themes.scss"
+        ],
         "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/fe-bs/src/styles", "libs/shared/ui-colors"]
+        },
         "customWebpackConfig": {
           "path": "apps/fe-bs/webpack.config.js"
         }

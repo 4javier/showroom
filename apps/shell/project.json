@@ -16,13 +16,16 @@
         "tsConfig": "apps/shell/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-        "styles": ["apps/shell/src/styles/styles.scss", "apps/shell/src/styles/themes.scss"],
+        "styles": [
+          "apps/shell/src/styles/styles.scss",
+          "apps/shell/src/styles/themes.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/shell/webpack.config.js"
         },
         "stylePreprocessorOptions": {
-          "includePaths": ["apps/shell/src/styles"]
+          "includePaths": ["apps/shell/src/styles", "libs/shared/ui-colors"]
         }
       },
       "configurations": {
