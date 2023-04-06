@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+@import "themes";
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  //	font-size: 16px;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+  background-color: $body-bg-light;
+}

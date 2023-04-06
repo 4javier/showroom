@@ -59,7 +59,7 @@ export class RemoteEntryComponent implements OnDestroy {
   hideButton$ = new Subject<boolean>();
   isButtonShown$ = this.hideButton$.pipe(
     startWith(false),
-    map((v) => !v),
+    map((v) => !v)
   );
 
   destroy$ = new ReplaySubject<void>();

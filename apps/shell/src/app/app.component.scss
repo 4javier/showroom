@@ -1,129 +1,128 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
-
-$background-gradient: linear-gradient(153deg, rgba(117, 149, 255, 1) 0%, rgba(111, 166, 255, 1) 42%, rgba(194, 216, 255, 0) 75%);
+@import "themes";
 
 :host {
-    display: block;
-    position: relative;
+  display: block;
+  position: relative;
 
-    &:before {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        background: $background-gradient;
-        width: 120%;
-        top: 0;
-        left: -75%;
-        bottom: 0;
-        transform: skew(20deg, 0deg);
-        z-index: -1;
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background: $background-gradient;
+    transform: skew(20deg, 0deg);
+    z-index: -1;
+    width: 120%;
+    top: 0;
+    height: 100%;
+    left: -75%;
+    @media (orientation: portrait) {
+      height: 100vh;
     }
+  }
 
-    --sr-logo-button-size-base: 12rem;
-
+  --sr-logo-button-size-base: 12rem;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding: 1rem;
 
-    @media(min-width: 576px) {
-        padding: 2rem;
+  @media (min-width: 576px) {
+    padding: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    padding: 4rem;
+  }
+
+  .sr-logo {
+    flex-basis: 100%;
+    position: relative;
+
+    & h1 {
+      font-family: 'Cinzel Decorative';
+      font-size: 3rem;
+
+      @media (min-width: 576px) {
+        font-size: 4rem;
+      }
+
+      @media (min-width: 992px) {
+        font-size: 6rem;
+      }
     }
+  }
 
-    @media(min-width: 768px) {
-        padding: 4rem;
+  .abstract {
+    text-align: center;
+    flex-grow: 1;
+    margin-top: 2em;
+
+    @media (min-width: 576px) {
+      font-size: 1.2rem;
     }
-
-    .sr-logo {
-        flex-basis: 100%;
-        position: relative;
-
-        & h1 {
-            font-family: 'Cinzel Decorative';
-            font-size: 3rem;
-
-            @media(min-width: 576px) {
-                font-size: 4rem;
-            }
-
-            @media(min-width: 992px) {
-                font-size: 6rem;
-            }
-        }
-    }
-
-    .abstract {
-        text-align: center;
-        flex-grow: 1;
-        margin-top: 2em;
-
-        @media(min-width: 576px) {
-            font-size: 1.2rem;
-        }
-    }
+  }
 }
 
 .btns-container {
+  display: flex;
+  justify-content: space-evenly;
+  --sr-logo-button-size: calc(var(--sr-logo-button-size-base) / 2);
+
+  @media (min-width: 576px) {
+    padding-bottom: 2rem;
+    --sr-logo-button-size: calc(var(--sr-logo-button-size-base) / 3 * 2);
+  }
+
+  @media (min-width: 768px) {
+    padding-bottom: 4rem;
+    --sr-logo-button-size: var(--sr-logo-button-size-base);
+  }
+
+  .btns-col {
     display: flex;
-    justify-content: space-evenly;
-    --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/2);
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
 
-    @media(min-width: 576px) {
-        padding-bottom: 2rem;
-        --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/3*2);
+    & > showroom-logo-button {
+      margin-left: 20%;
+      margin-right: 20%;
     }
 
-    @media(min-width: 768px) {
-        padding-bottom: 4rem;
-        --sr-logo-button-size: var(--sr-logo-button-size-base);
+    & > a {
+      margin-right: auto;
+      --sr-logo-button-size: calc(var(--sr-logo-button-size-base) / 4);
+
+      @media (min-width: 576px) {
+        margin-top: 1rem;
+        --sr-logo-button-size: calc(var(--sr-logo-button-size-base) / 3);
+      }
+
+      @media (min-width: 768px) {
+        --sr-logo-button-size: calc(var(--sr-logo-button-size-base) / 2);
+      }
     }
 
-    .btns-col {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-content: center;
-
-        &>showroom-logo-button {
-            margin-left: 20%;
-            margin-right: 20%;
-        }
-
-        &>a {
-            margin-right: auto;
-            --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/4);
-
-            @media(min-width: 576px) {
-                margin-top: 1rem;
-                --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/3);
-            }
-
-            @media(min-width: 768px) {
-                --sr-logo-button-size: calc(var(--sr-logo-button-size-base)/2);
-            }
-        }
-
-        &:last-of-type>a {
-            margin-right: 0;
-            margin-left: auto;
-        }
+    &:last-of-type > a {
+      margin-right: 0;
+      margin-left: auto;
     }
-
+  }
 }
 
 .sr-badge {
-    display: inline-block;
-    position: relative;
-    top: -30%;
-    right: -30%;
-    width: 20%;
-    height: 20%;
-    fill: lightslategrey;
-    border-radius: 100%;
-    background-color: aliceblue;
-    padding: 0.5em;
+  display: inline-block;
+  position: relative;
+  top: -30%;
+  right: -30%;
+  width: 20%;
+  height: 20%;
+  fill: lightslategrey;
+  border-radius: 100%;
+  background-color: aliceblue;
+  padding: 0.5em;
 }
