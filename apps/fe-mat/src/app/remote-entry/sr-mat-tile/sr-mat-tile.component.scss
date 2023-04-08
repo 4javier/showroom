@@ -64,10 +64,10 @@
           }
         }
       }
+    }
 
-      &:hover {
-        transform: rotateY(180deg);
-      }
+    &:hover > div {
+      transform: rotateY(180deg);
     }
   }
 }
