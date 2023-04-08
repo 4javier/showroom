@@ -1,5 +1,4 @@
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
+@import 'themes';
 @import 'bootstrap/scss/maps';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
@@ -46,7 +45,11 @@
 }
 
 .sr-sidebar {
+  background-color: rgb($primary-white, 0.7);
   z-index: $zindex-offcanvas;
+  border-top-right-radius: var(--bs-border-radius-lg);
+  box-shadow: 0.5rem 0.5rem 1rem 0.5rem;
+  height: 100vh; 
 }
 
 .sr-offcanvas-panel {
