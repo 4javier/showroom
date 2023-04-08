@@ -1,11 +1,10 @@
-@use 'sass:color';
+@import 'sr-palette';
 
-$body-bg-light: color.mix(rgb(243, 92, 22), rgb(255, 255, 255), 10%);
-$body-curtain-light: rgb(66, 79, 138);
+$body-bg: $sr-orange-light-100;
 $background-gradient: linear-gradient(
   180deg,
-  color.mix($body-curtain-light, #fff, 80%) 0%,
-  color.mix($body-curtain-light, #fff, 40%) 45%,
-  color.mix($body-curtain-light, #fff, 20%) 75%,
+  $sr-blue-light-400 0%,
+  $sr-blue-light-300 45%,
+  $sr-blue-light-200 75%,
   rgb(255, 255, 255, 0) 100%
 );
