@@ -1,0 +1,23 @@
+@use 'sass:color';
+
+$sr-orange-light: rgb(243, 92, 22);
+$sr-orange-light-100: mix( #fff, $sr-orange-light, 90%);
+$sr-orange-light-200: mix( #fff, $sr-orange-light, 70%);
+$sr-orange-light-300: mix( #fff, $sr-orange-light, 40%);
+$sr-orange-light-400: mix( #fff, $sr-orange-light, 20%);
+$sr-orange-light-500: $sr-orange-light;
+$sr-orange-light-600: mix( #000, $sr-orange-light, 20%);
+$sr-orange-light-700: mix( #000, $sr-orange-light, 40%);
+$sr-orange-light-800: mix( #000, $sr-orange-light, 60%);
+$sr-orange-light-900: mix( #000, $sr-orange-light, 80%);
+
+$sr-blue-light: #4a60ca;
+$sr-blue-light-100: mix( #fff, $sr-blue-light, 90%);
+$sr-blue-light-200: mix( #fff, $sr-blue-light, 70%);
+$sr-blue-light-300: mix( #fff, $sr-blue-light, 40%);
+$sr-blue-light-400: mix( #fff, $sr-blue-light, 20%);
+$sr-blue-light-500: $sr-blue-light;
+$sr-blue-light-600: mix( #000, $sr-blue-light, 20%);
+$sr-blue-light-700: mix( #000, $sr-blue-light, 40%);
+$sr-blue-light-800: mix( #000, $sr-blue-light, 60%);
+$sr-blue-light-900: mix( #000, $sr-blue-light, 80%);
