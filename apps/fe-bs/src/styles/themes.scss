@@ -1,0 +1,23 @@
+@use 'sass:color';
+@import 'bootstrap/scss/functions';
+@import 'sr-palette';
+
+$primary: $sr-orange-light-600;
+$secondary: $sr-blue-light;
+
+$primary-white: $sr-orange-light-100;
+$secondary-white: $sr-blue-light-100;
+
+$primary-bright: $sr-orange-light-400;
+$secondary-bright: $sr-blue-light-400;
+
+$body-bg: $sr-orange-light-200;
+$link-color: $sr-orange-light-700;
+
+@import 'bootstrap/scss/variables';
+
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary,
+  "secondary": $secondary
+));
+
