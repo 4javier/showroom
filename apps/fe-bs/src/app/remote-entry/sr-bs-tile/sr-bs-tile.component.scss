@@ -70,10 +70,10 @@
           }
         }
       }
+    }
 
-      &:hover {
-        transform: rotateY(180deg);
-      }
+    &:hover > .card-body {
+      transform: rotateY(180deg);
     }
   }
 }
