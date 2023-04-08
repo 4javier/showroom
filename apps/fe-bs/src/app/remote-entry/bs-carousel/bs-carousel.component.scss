@@ -4,10 +4,16 @@
 @import 'bootstrap/scss/card';
 @import 'bootstrap/scss/placeholders';
 @import 'bootstrap/scss/images';
+@import 'themes';
 
 ngb-carousel {
   .card {
     border: 0;
+
+    .card-header,
+    .card-footer {
+      background-color: $secondary-white;
+    }
 
     .card-body {
       padding: 0;
