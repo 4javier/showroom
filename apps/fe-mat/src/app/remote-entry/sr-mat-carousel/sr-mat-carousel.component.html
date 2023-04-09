@@ -1,0 +1,89 @@
+<div
+  *ngIf="!isLoading; else placeholder"
+  class="slider-container"
+  (mouseenter)="pauseOn()"
+  (mouseleave)="pauseOff()"
+>
+  <button
+    mat-fab
+    color="primary"
+    (click)="prevSlide()"
+    aria-label="Previous slide"
+  >
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <div class="slider" (click)="toggleStop()">
+    <div class="inner" [style]="translate">
+      <ng-container *ngFor="let slide of slides">
+        <mat-card class="slide">
+          <mat-card-header>
+            <img *ngIf="slide.origin" mat-card-avatar [src]="slide.origin" />
+            <mat-card-title class="sr-card-title">{{
+              slide.title
+            }}</mat-card-title>
+            <mat-card-subtitle *ngIf="slide.subtitle">{{
+              slide.subtitle
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            [src]="slide.image"
+            [alt]="slide.title + ' image'"
+          />
+          <mat-card-content>
+            <p>{{ slide.content }}</p>
+          </mat-card-content>
+          <mat-card-actions class="sr-card-actions">
+            <a
+              mat-icon-button
+              color="primary"
+              (click)="$event.stopPropagation()"
+              [href]="slide.link"
+              target="_blank"
+              aria-label="open in new tab"
+            >
+              <mat-icon>open_in_new</mat-icon>
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+  <button mat-fab color="primary" (click)="nextSlide()" aria-label="Next slide">
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+</div>
+
+<ng-template #placeholder>
+  <div class="slider-container">
+    <button mat-fab color="primary" disabled>
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <div class="slider">
+      <div class="inner">
+        <mat-card class="slide">
+          <mat-card-header>
+            <mat-card-title class="sr-card-title">Loading...</mat-card-title>
+            <mat-card-subtitle
+              >Wait for data to be fetched...</mat-card-subtitle
+            >
+          </mat-card-header>
+          <div class="sr-card-spinner-container">
+            <mat-spinner />
+          </div>
+          <mat-card-content>
+            <p><br /></p>
+          </mat-card-content>
+          <mat-card-actions class="sr-card-actions">
+            <a mat-icon-button color="primary" disabled>
+              <mat-icon>open_in_new</mat-icon>
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <button mat-fab color="primary" disabled>
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
+</ng-template>

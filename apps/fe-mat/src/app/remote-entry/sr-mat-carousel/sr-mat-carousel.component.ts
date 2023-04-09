@@ -26,10 +26,10 @@ import { SlideData } from '@showroom/shared/data-fetching';
     MatIconModule,
     MatProgressSpinnerModule,
   ],
-  templateUrl: './mat-carousel.component.html',
-  styleUrls: ['./mat-carousel.component.scss'],
+  templateUrl: './sr-mat-carousel.component.html',
+  styleUrls: ['./sr-mat-carousel.component.scss'],
 })
-export class MatCarouselComponent implements OnDestroy {
+export class SrMatCarouselComponent implements OnDestroy {
   @Input()
   isLoading = false;
   @Input()

@@ -7,7 +7,7 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { MatCarouselComponent } from './mat-carousel.component';
+import { SrMatCarouselComponent } from './sr-mat-carousel.component';
 
 const stubSlide = (id: number) => ({
   title: `title-${id}`,
@@ -15,25 +15,25 @@ const stubSlide = (id: number) => ({
   link: `link-${id}`,
 });
 
-describe('MatCarouselComponent', () => {
-  let component: MatCarouselComponent;
-  let fixture: ComponentFixture<MatCarouselComponent>;
+describe('SrMatCarouselComponent', () => {
+  let component: SrMatCarouselComponent;
+  let fixture: ComponentFixture<SrMatCarouselComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatCarouselComponent],
+      imports: [SrMatCarouselComponent],
     }).compileComponents();
   });
 
   it('should create', () => {
-    fixture = TestBed.createComponent(MatCarouselComponent);
+    fixture = TestBed.createComponent(SrMatCarouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
   it('should cycle every 3 seconds', fakeAsync(() => {
-    fixture = TestBed.createComponent(MatCarouselComponent);
+    fixture = TestBed.createComponent(SrMatCarouselComponent);
     component = fixture.componentInstance;
     component.slides = [stubSlide(1), stubSlide(2), stubSlide(3)];
     fixture.detectChanges();
@@ -45,7 +45,7 @@ describe('MatCarouselComponent', () => {
   }));
 
   it('should pause cycling when hovered', fakeAsync(() => {
-    fixture = TestBed.createComponent(MatCarouselComponent);
+    fixture = TestBed.createComponent(SrMatCarouselComponent);
     component = fixture.componentInstance;
     component.slides = [stubSlide(1), stubSlide(2), stubSlide(3)];
     fixture.detectChanges();
@@ -64,7 +64,7 @@ describe('MatCarouselComponent', () => {
 }));
 
   it('should stop cycling on first click and restart on second one',  fakeAsync(() => {
-      fixture = TestBed.createComponent(MatCarouselComponent);
+      fixture = TestBed.createComponent(SrMatCarouselComponent);
       component = fixture.componentInstance;
       component.slides = [stubSlide(1), stubSlide(2), stubSlide(3)];
       fixture.detectChanges();
@@ -84,7 +84,7 @@ describe('MatCarouselComponent', () => {
 
   describe('when next button is clicked', () => {
     it('should slide forward if not at the end', () => {
-      fixture = TestBed.createComponent(MatCarouselComponent);
+      fixture = TestBed.createComponent(SrMatCarouselComponent);
       component = fixture.componentInstance;
       component.slides = [stubSlide(1), stubSlide(2), stubSlide(3)];
       fixture.detectChanges();
@@ -96,7 +96,7 @@ describe('MatCarouselComponent', () => {
     });
 
     it('should do nothing if at the end', () => {
-      fixture = TestBed.createComponent(MatCarouselComponent);
+      fixture = TestBed.createComponent(SrMatCarouselComponent);
       component = fixture.componentInstance;
       component.slides = [stubSlide(1), stubSlide(2), stubSlide(3)];
       component.focusedIndex = 2
@@ -110,7 +110,7 @@ describe('MatCarouselComponent', () => {
 
   describe('when previous button is clicked', () => {
     it('should slide backward if not at the beginning', () => {
-      fixture = TestBed.createComponent(MatCarouselComponent);
+      fixture = TestBed.createComponent(SrMatCarouselComponent);
       component = fixture.componentInstance;
       component.slides = [stubSlide(1), stubSlide(2), stubSlide(3)];
       component.focusedIndex = 2
@@ -122,7 +122,7 @@ describe('MatCarouselComponent', () => {
     });
 
     it('should do nothing if at the beginning', () => {
-      fixture = TestBed.createComponent(MatCarouselComponent);
+      fixture = TestBed.createComponent(SrMatCarouselComponent);
       component = fixture.componentInstance;
       component.slides = [stubSlide(1), stubSlide(2), stubSlide(3)];
       fixture.detectChanges();
