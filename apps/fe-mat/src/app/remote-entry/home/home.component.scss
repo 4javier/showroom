@@ -1,12 +1,5 @@
-@use '@angular/material' as mat;
-@import 'sr-mat-themes';
-
 .container {
   position: relative;
-}
-
-mat-grid-tile {
-  background-color: mat.get-color-from-palette($sr-primary, 500);
 }
 
 mat-grid-tile-header {

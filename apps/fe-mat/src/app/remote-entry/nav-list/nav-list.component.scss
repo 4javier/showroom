@@ -1,7 +1,9 @@
 a[mat-list-item] {
+  
   & ::ng-deep.mat-mdc-list-item-unscoped-content {
     display: flex;
     justify-content: space-between;
     min-width: 15vw;
   }
+
 }

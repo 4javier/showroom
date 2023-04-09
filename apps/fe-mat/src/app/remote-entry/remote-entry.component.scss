@@ -1,20 +1,7 @@
-@use '@angular/material' as mat;
-@use 'sass:map';
+@use 'themes';
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@300;600&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined);
-@import 'sr-mat-themes';
-
-@include mat.core();
-
-@include mat.sidenav-theme($sr-theme);
-@include mat.fab-theme($sr-theme);
-@include mat.icon-button-theme($sr-theme);
-@include mat.icon-theme($sr-theme);
-@include mat.card-theme($sr-theme);
-@include mat.progress-spinner-theme($sr-theme);
-@include mat.list-theme($sr-theme);
-@include mat.typography-hierarchy($sr-theme);
 
 :host {
   margin: 0;
@@ -29,10 +16,6 @@ mat-drawer-container {
   position: relative;
   min-height: 100vh;
   background-color: transparent !important;
-
-  & > mat-drawer.mat-drawer-over {
-    background-color: rgba(map.get($sr-primary, 50), 0.9);
-  }
 }
 
 .router-wrapper {

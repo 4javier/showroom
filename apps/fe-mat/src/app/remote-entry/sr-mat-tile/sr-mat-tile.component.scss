@@ -43,14 +43,12 @@
         align-items: center;
 
         &.sr-logo-face {
-          background-color: cornflowerblue;
           &::ng-deep > svg {
             width: 30%;
           }
         }
 
         &.sr-text-face {
-          background-color: sandybrown;
           transform: rotateY(180deg);
           display: flex;
 
