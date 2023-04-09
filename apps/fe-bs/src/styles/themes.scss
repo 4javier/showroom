@@ -1,23 +1,26 @@
 @use 'sass:color';
+@use 'sass:map';
 @import 'bootstrap/scss/functions';
 @import 'sr-palette';
 
-$primary: $sr-orange-light-600;
-$secondary: $sr-blue-light;
+$primary: map.get($sr-orange-light-palette, 600);
+$secondary: map.get($sr-blue-light-palette, 500);
 
-$primary-white: $sr-orange-light-100;
-$secondary-white: $sr-blue-light-100;
+$primary-white: map.get($sr-orange-light-palette, 50);
+$secondary-white: map.get($sr-blue-light-palette, 50);
 
-$primary-bright: $sr-orange-light-400;
-$secondary-bright: $sr-blue-light-400;
+$primary-bright: map.get($sr-orange-light-palette, 400);
+$secondary-bright: map.get($sr-blue-light-palette, 400);
 
-$body-bg: $sr-orange-light-200;
-$link-color: $sr-orange-light-700;
+$body-bg: map.get($sr-orange-light-palette, 200);
+$link-color: map.get($sr-orange-light-palette, 700);
 
 @import 'bootstrap/scss/variables';
 
-$theme-colors: map-merge($theme-colors, (
-  "primary": $primary,
-  "secondary": $secondary
-));
-
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    'primary': $primary,
+    'secondary': $secondary,
+  )
+);
