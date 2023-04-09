@@ -48,8 +48,8 @@
   background-color: rgb($primary-white, 0.7);
   z-index: $zindex-offcanvas;
   border-top-right-radius: var(--bs-border-radius-lg);
-  box-shadow: 0.5rem 0.5rem 1rem 0.5rem;
-  height: 100vh; 
+  box-shadow: 0.5rem 0.5rem 0.5rem gray;
+  height: 100vh;
 }
 
 .sr-offcanvas-panel {
@@ -76,24 +76,4 @@
   height: 1em;
   fill: currentColor;
   align-self: center;
-}
-
-.sr-home-header {
-  text-align: center;
-  margin-bottom: 3rem;
-
-  & > .sr-home-title {
-    font-size: xxx-large;
-    font-weight: 600;
-    letter-spacing: 0.2rem;
-  }
-
-  & > .sr-home-subtitle {
-    font-size: large;
-    font-weight: 600;
-  }
-}
-
-.carousel-inner {
-  border-radius: var(--bs-border-radius);
 }

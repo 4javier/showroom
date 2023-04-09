@@ -19,6 +19,11 @@ ngb-carousel {
       padding: 0;
     }
   }
+
+  ::ng-deep .carousel-inner {
+    border-radius: var(--bs-border-radius);
+  }
+  
 }
 
 .sr-avatar {
