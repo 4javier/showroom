@@ -1,0 +1,67 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use '../app/remote-entry/nav-list/nav-list.theme' as nav-list;
+@use '../app/remote-entry/remote-entry.theme' as remote-entry;
+@use '../app/remote-entry/sr-mat-tile/sr-mat-tile.theme' as sr-mat-tile;
+
+@import 'sr-palette';
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+$contrast-map: (
+  50: $dark-primary-text,
+  100: $dark-primary-text,
+  200: $dark-primary-text,
+  300: $dark-primary-text,
+  400: $dark-primary-text,
+  500: $light-primary-text,
+  600: $light-primary-text,
+  700: $light-primary-text,
+  800: $light-primary-text,
+  900: $light-primary-text,
+  A100: $dark-primary-text,
+  A200: $light-primary-text,
+  A400: $light-primary-text,
+  A700: $light-primary-text,
+);
+
+$sr-orange-light-palette-mat: map.set($sr-orange-light-palette, contrast, $contrast-map);
+$sr-blue-light-palette-mat: map.set($sr-blue-light-palette, contrast, $contrast-map);
+
+$sr-primary: mat.define-palette($sr-orange-light-palette-mat, 500, 300, 700, 900);
+$sr-accent: mat.define-palette($sr-blue-light-palette-mat, 500, 200, 100, 400);
+
+$sr-light-background-edits: (
+  card: rgba(map.get($sr-accent, 50), 0.6),
+  dialog: rgba(map.get($sr-primary, 50), 0.6),
+  raised-button: rgba(map.get($sr-primary, 50), 0.3),
+);
+mat.$light-theme-background-palette: map.merge(
+  mat.$light-theme-background-palette,
+  $sr-light-background-edits
+);
+
+$sr-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $sr-primary,
+      accent: $sr-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.core();
+
+@include mat.sidenav-theme($sr-theme);
+@include mat.fab-theme($sr-theme);
+@include mat.icon-button-theme($sr-theme);
+@include mat.icon-theme($sr-theme);
+@include mat.card-theme($sr-theme);
+@include mat.progress-spinner-theme($sr-theme);
+@include mat.list-theme($sr-theme);
+@include mat.typography-hierarchy($sr-theme);
+@include nav-list.theme($sr-theme);
+@include remote-entry.theme($sr-theme);
+@include sr-mat-tile.theme($sr-theme);

@@ -16,13 +16,16 @@
         "tsConfig": "apps/fe-mat/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/fe-mat/src/favicon.ico", "apps/fe-mat/src/assets"],
-        "styles": ["apps/fe-mat/src/styles.scss"],
+        "styles": [
+          "apps/fe-mat/src/styles/styles.scss",
+          "apps/fe-mat/src/styles/themes.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/fe-mat/webpack.config.js"
         },
         "stylePreprocessorOptions": {
-          "includePaths": ["apps/fe-mat/src/themes", "libs/shared/ui-colors"]
+          "includePaths": ["apps/fe-mat/src/styles", "libs/shared/ui-colors"]
         }
       },
       "configurations": {
