@@ -2,6 +2,7 @@
 import {
   Component,
   ElementRef,
+  Injector,
   OnDestroy,
   ViewChild,
   ViewEncapsulation,
@@ -66,7 +67,8 @@ export class RemoteEntryComponent implements OnDestroy {
 
   constructor(
     private offcanvasService: NgbOffcanvas,
-    private lras: LightRoutingAnimationService
+    private lras: LightRoutingAnimationService,
+    private injector: Injector
   ) {
     this.lras.rendered$
       .pipe(
@@ -85,6 +87,7 @@ export class RemoteEntryComponent implements OnDestroy {
         container: this.container.nativeElement,
         scroll: true,
         panelClass: 'sr-offcanvas-panel',
+        injector: this.injector
       })
       .hidden.subscribe(() => this.hideButton$.next(false));
   }
