@@ -17,8 +17,7 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
         "styles": [
-          "apps/shell/src/styles/styles.scss",
-          "apps/shell/src/styles/themes.scss"
+          "apps/shell/src/styles/styles.scss"
         ],
         "scripts": [],
         "customWebpackConfig": {

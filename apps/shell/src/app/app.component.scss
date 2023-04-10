@@ -1,24 +1,6 @@
-@import "themes";
-
 :host {
   display: block;
   position: relative;
-
-  &:before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    background: $background-gradient;
-    transform: skew(20deg, 0deg);
-    z-index: -1;
-    width: 120%;
-    top: 0;
-    height: 100%;
-    left: -75%;
-    @media (orientation: portrait) {
-      height: 100vh;
-    }
-  }
 
   --sr-logo-button-size-base: 12rem;
 }
