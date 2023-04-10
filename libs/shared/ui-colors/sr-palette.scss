@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:map';
 
 $sr-orange-light: rgb(243, 92, 22);
 $sr-orange-light-palette: (
@@ -13,7 +14,7 @@ $sr-orange-light-palette: (
   800: mix(#000, $sr-orange-light, 60%),
   900: mix(#000, $sr-orange-light, 80%),
 );
-$sr-blue-light: #4a60ca;
+$sr-blue-light: rgb(74, 96, 202);
 $sr-blue-light-palette: (
   50: mix(#fff, $sr-blue-light, 90%),
   100: mix(#fff, $sr-blue-light, 80%),
@@ -26,3 +27,17 @@ $sr-blue-light-palette: (
   800: mix(#000, $sr-blue-light, 60%),
   900: mix(#000, $sr-blue-light, 80%),
 );
+
+:root {
+  --sr-orange-light: #{$sr-orange-light};
+  --sr-blue-light: #{$sr-blue-light};
+
+  --sr-body-bg: #{map.get($sr-orange-light-palette, 50)};
+  --sr-background-gradient: linear-gradient(
+    180deg,
+    #{map.get($sr-blue-light-palette, 400)} 0%,
+    #{map.get($sr-blue-light-palette, 300)} 45%,
+    #{map.get($sr-blue-light-palette, 200)} 75%,
+    rgb(255, 255, 255, 0) 100%
+  );
+}
