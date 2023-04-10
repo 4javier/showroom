@@ -7,16 +7,12 @@
 
 @import 'themes';
 
-:host::ng-deep ngb-carousel {
+:host::ng-deep {
   @import 'bootstrap/scss/carousel';
 
   .card {
     border: 0;
-
-    .card-header,
-    .card-footer {
-      background-color: $secondary-white;
-    }
+    background-color: rgb($secondary-white, 0.7);
 
     .card-body {
       padding: 0;
