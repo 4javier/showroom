@@ -2,11 +2,14 @@
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/card';
-@import 'bootstrap/scss/placeholders';
 @import 'bootstrap/scss/images';
+@import 'bootstrap/scss/placeholders';
+
 @import 'themes';
 
-ngb-carousel {
+:host::ng-deep ngb-carousel {
+  @import 'bootstrap/scss/carousel';
+
   .card {
     border: 0;
 
@@ -20,10 +23,9 @@ ngb-carousel {
     }
   }
 
-  ::ng-deep .carousel-inner {
+  .carousel-inner {
     border-radius: var(--bs-border-radius);
   }
-  
 }
 
 .sr-avatar {
