@@ -36,19 +36,25 @@ mat-drawer-container {
   z-index: 2;
 }
 
-.sr-home-header {
+.sr-route-header {
   font-family: 'Roboto Serif';
   text-align: center;
   margin-bottom: 3rem;
 
-  & > .sr-home-title {
-    font-size: xxx-large;
+  & > .sr-route-title {
+    font-size: xx-large;
+    @media (min-width: 769px) {
+      font-size: xxx-large;
+    }
     font-weight: 600;
     letter-spacing: 0.2rem;
   }
 
-  & > .sr-home-subtitle {
-    font-size: large;
+  & > .sr-route-subtitle {
+    font-size: medium;
+    @media (min-width: 769px) {
+      font-size: large;
+    }
     font-weight: 600;
   }
 }

@@ -77,3 +77,25 @@
   fill: currentColor;
   align-self: center;
 }
+
+.sr-route-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  & > .sr-route-title {
+    font-size: xx-large;
+    @include media-breakpoint-up(md) {
+      font-size: xxx-large;
+    }
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+  }
+
+  & > .sr-route-subtitle {
+    font-size: medium;
+    @include media-breakpoint-up(md) {
+      font-size: large;
+    }
+    font-weight: 600;
+  }
+}
