@@ -1,0 +1,241 @@
+.info-abstract {
+  text-align: center;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90vw;
+  margin-top: 3rem;
+  min-height: 75vw;
+
+  & .shell-container {
+    position: relative;
+  }
+
+  & .shell,
+  .remote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  & .remote {
+    border: thin solid var(--sr-blue-light);
+    border-radius: 10%;
+
+    & > svg {
+      width: 10vw;
+      height: 12vw;
+    }
+  }
+
+  & .shell {
+    & > svg {
+      width: 12vw;
+      height: 12vw;
+    }
+  }
+
+  & .rem-wrap,
+  .shell-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem;
+
+    & .preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 100%;
+      opacity: 0;
+      transition: opacity 1s;
+
+      & img {
+        width: 15vw;
+      }
+    }
+
+    &.rem-left .preview img {
+      content: url('/assets/preview-mat-standalone.webp');
+    }
+
+    &.rem-right .preview img {
+      content: url('/assets/preview-bs-standalone.webp');
+    }
+
+    & > span {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    & .remote {
+      padding: 1rem;
+    }
+
+    &:hover {
+      & .preview {
+        opacity: 1;
+        transition: opacity 1s;
+      }
+    }
+  }
+
+  & .rem-wrap {
+    border: solid transparent;
+    position: relative;
+    & > span {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    transition: box-shadow 1s;
+
+    & .preview {
+      margin-top: 1rem;
+
+      &::after {
+        text-align: center;
+        content: 'Accessing directly the remote on its address will present it as a \
+      standalone app';
+      }
+    }
+  }
+
+  & .wp-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    transform: translateY(0%);
+    transition: transform 1s, opacity 0.5s, filter 0.3s;
+    & img {
+      width: 15vw;
+      content: url('/assets/wp_mf_logo.webp');
+    }
+  }
+
+  & .shell-wrap {
+    border-radius: 20%;
+    background: radial-gradient(white, var(--sr-orange-light) 90%);
+    box-shadow: 0 0 0.5rem;
+    transition: box-shadow 0.3s, filter 0.3s;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+    &:active {
+      filter: brightness(1);
+      box-shadow: 0 0 0.1rem;
+    }
+  }
+
+  &.--shell-active {
+    & .shell-wrap {
+      box-shadow: 0 0 0.1rem;
+      transition: box-shadow 0.3s, filter 0.3s;
+    }
+
+    & .wp-logo {
+      transform: translateY(125%);
+      filter: brightness(1.2);
+      opacity: 1;
+      transition: transform 1s, opacity 0.5s, filter 0.5s 1s;
+    }
+
+    & .rem-wrap {
+      border: solid var(--sr-orange-light);
+      border-radius: 10%;
+      transition: border 0.5s 2.5s;
+
+      &.rem-left {
+        animation: move-left-remote-to-child 1s 1.5s forwards;
+
+        & .preview img {
+          content: url('/assets/preview-mat-remote.webp');
+        }
+      }
+      &.rem-right {
+        animation: move-right-remote-to-child 1s 1.5s forwards;
+
+        & .preview img {
+          content: url('/assets/preview-bs-remote.webp');
+        }
+      }
+
+      & > span {
+        opacity: 1;
+        transition: opacity 1s 2.5s;
+      }
+    }
+
+    .remote .preview::after {
+      content: 'Accessing the remote from shell will get it rendered as its child route';
+    }
+  }
+
+  &.--shell-inactive {
+    & .rem-left {
+      animation: move-left-remote-back 1s forwards;
+    }
+    & .rem-right {
+      animation: move-right-remote-back 1s forwards;
+    }
+  }
+}
+
+@keyframes move-left-remote-to-child {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 200%);
+  }
+  100% {
+    transform: translate(50%, 200%);
+  }
+}
+
+@keyframes move-right-remote-to-child {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 200%);
+  }
+  100% {
+    transform: translate(-50%, 200%);
+  }
+}
+
+@keyframes move-left-remote-back {
+  0% {
+    transform: translate(50%, 200%);
+  }
+  50% {
+    transform: translate(0, 200%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes move-right-remote-back {
+  0% {
+    transform: translate(-50%, 200%);
+  }
+  50% {
+    transform: translate(0, 200%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
