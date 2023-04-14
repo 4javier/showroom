@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent, REMOTE_URLS } from './app.component';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { provideRouter } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { FeaturesComponent } from './features/features.component';
 import { ShadowRoutingAnimationService } from '@showroom/shared/shadow-routing-animation';
 import { Component } from '@angular/core';
 
@@ -19,7 +19,7 @@ class StubComponent {}
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, HomeComponent],
+      imports: [AppComponent, FeaturesComponent],
       providers: [
         provideRouter([
           {path: '**', component: StubComponent},
