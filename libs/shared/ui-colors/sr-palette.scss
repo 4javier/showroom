@@ -30,8 +30,10 @@ $sr-blue-light-palette: (
 
 :root {
   --sr-orange-light: #{$sr-orange-light};
+  --sr-orange-light-300: #{map.get($sr-orange-light-palette, 300)};
   --sr-blue-light: #{$sr-blue-light};
   --sr-blue-light-100: #{map.get($sr-blue-light-palette, 100)};
+  --sr-blue-light-300: #{map.get($sr-blue-light-palette, 300)};
 
   --sr-body-bg: #{map.get($sr-orange-light-palette, 50)};
   --sr-background-gradient: linear-gradient(

@@ -1,148 +1,141 @@
 :host(.activating) {
-
-    div.logo {
-        .inner-circle,
-        >svg:not(:first-of-type) {
-            transform-origin: center;
-            transition: transform 0.25s;
-            transform: scale(0.95);
-        }
-
-        .inner-circle {
-            filter: url(#inset-shadow);
-        }
-
-        #inset-shadow>feFlood {
-            transition: flood-opacity 0.5s;
-            flood-opacity: 1;
-        }
-
+  div.logo {
+    .inner-circle,
+    > svg:not(:first-of-type) {
+      transform-origin: center;
+      transition: transform 0.25s;
+      transform: scale(0.95);
     }
+
+    .inner-circle {
+      filter: url(#inset-shadow);
+    }
+
+    #inset-shadow > feFlood {
+      transition: flood-opacity 0.5s;
+      flood-opacity: 1;
+    }
+  }
 }
 
 :host(.activated) {
-    pointer-events: none;
+  pointer-events: none;
 
-    div.logo {
-
-        .inner-circle,
-        >svg:not(:first-of-type) {
-            transform-origin: center;
-            transform: scale(0.95);
-        }
-
-        .inner-circle {
-            filter: url(#inset-shadow);
-        }
-        
-        #inset-shadow>feFlood {
-            flood-opacity: 1;
-        }
-
-        .outer-circle-paths>path {
-            stroke-dasharray: 1;
-            stroke-dashoffset: 1;
-            stroke: #3F51B5;
-            animation: dash 0.25s linear alternate forwards;
-        }
-
-        @keyframes dash {
-            0% { stroke-dashoffset: 1; }
-            50% { filter: none; }
-            100% {
-                stroke-dashoffset: 0;
-                filter: drop-shadow(0 0 0.05rem #3F51B5);
-            }
-
-        }
+  div.logo {
+    .inner-circle,
+    > svg:not(:first-of-type) {
+      transform-origin: center;
+      transform: scale(0.95);
     }
+
+    .inner-circle {
+      filter: url(#inset-shadow);
+    }
+
+    #inset-shadow > feFlood {
+      flood-opacity: 1;
+    }
+
+    .outer-circle-paths > path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      stroke: #3f51b5;
+      animation: dash 0.25s linear alternate forwards;
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dashoffset: 1;
+      }
+      50% {
+        filter: none;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        filter: drop-shadow(0 0 0.05rem #3f51b5);
+      }
+    }
+  }
 }
 
 div.logo {
-    
-    width: var(--sr-logo-button-size);
-    height: var(--sr-logo-button-size);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: var(--sr-logo-button-size);
+  height: var(--sr-logo-button-size);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .inner-circle {
-        transition: transform 0.25s;
-        transform-origin: center;
-        transform: scale(1);
+  .inner-circle {
+    transition: transform 0.25s;
+    transform-origin: center;
+    transform: scale(1);
+  }
+
+  #drop-shadow > feDropShadow {
+    transition: flood-opacity 0.25s;
+    flood-opacity: 1;
+  }
+
+  #inset-shadow > feFlood {
+    transition: flood-opacity 0.5s;
+    flood-opacity: 0;
+  }
+
+  > svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: clip;
+    overflow-clip-margin: 1rem;
+
+    & .outer-circle {
+      stroke: lightgray;
+      fill: transparent;
+      cx: 50%;
+      cy: 50%;
+      r: 50%;
     }
 
-    #drop-shadow>feDropShadow {
-        transition: flood-opacity 0.25s;
-        flood-opacity: 1;
+    & .inner-circle {
+      fill: #e8eaf6;
+      filter: url(#drop-shadow);
+      cx: 50%;
+      cy: 50%;
+      r: 40%;
     }
 
-    #inset-shadow>feFlood {
-        transition: flood-opacity 0.5s;
-        flood-opacity: 0;
+    &:not(:first-of-type) {
+      // compute inscript square side with inner-circle-radius * √2
+      max-width: calc(var(--sr-logo-button-size) * 0.4 * 1.41421);
+      max-height: calc(var(--sr-logo-button-size) * 0.4 * 1.41421);
+      transform-origin: center;
+      transition: transform 0.25s;
+    }
+  }
+
+  &:hover {
+    .inner-circle,
+    > svg:not(:first-of-type) {
+      transition: transform 0.25s;
+      transform-origin: center;
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    & .inner-circle,
+    & > svg:not(:first-of-type) {
+      transform: scale(1);
     }
 
-    >svg {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: clip;
-        overflow-clip-margin: 1rem;
-
-        & .outer-circle {
-            stroke: lightgray;
-            fill: transparent;
-            cx: 50%;
-            cy: 50%;
-            r: 50%;
-        }
-
-        & .inner-circle {
-            fill: #e8eaf6;
-            filter: url(#drop-shadow);
-            cx: 50%;
-            cy: 50%;
-            r: 40%;
-        }
-
-        &:not(:first-of-type) {
-            // compute inscript square side with inner-circle-radius * √2
-            max-width: calc(var(--sr-logo-button-size)*0.4*1.41421);
-            max-height: calc(var(--sr-logo-button-size)*0.4*1.41421);
-            transform-origin: center;
-            transition: transform 0.25s;
-        }
-
+    & .inner-circle {
+      filter: url(#drop-shadow);
     }
 
-    &:hover {
-
-        .inner-circle,
-        >svg:not(:first-of-type) {
-            transition: transform 0.25s;
-            transform-origin: center;
-            transform: scale(1.1);
-        }
-
+    & #drop-shadow > feDropShadow {
+      transition: flood-opacity 0.25s;
+      flood-opacity: 0;
     }
-
-    &:active {
-        
-        & .inner-circle,
-        &>svg:not(:first-of-type) {
-            transform: scale(1);
-        }
-
-        & .inner-circle {
-            filter: url(#drop-shadow);
-        }
-    
-        & #drop-shadow>feDropShadow {
-            transition: flood-opacity 0.25s;
-            flood-opacity: 0;
-        }
-    }
-
-
+  }
 }
