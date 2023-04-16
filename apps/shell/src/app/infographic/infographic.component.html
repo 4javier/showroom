@@ -1,20 +1,30 @@
 <div sr-lra-item>
-  <h2 class="info-abstract">
+  <h3 class="info-abstract">
     Example of webapp based on Micro-Frontend architecture. <br />
-    Each one of the three apps is built and deployed independently <br />
+    Each one of the three apps is built and deployed independently. <br />
+    <br />
     Using main buttons will make remotes being discovered by Webpack
     module-federation plugin <br />
     and appended to Shell app's tree as children routes. <br />
-    Material and Bootstrap remote variants can be reached as standalone <br />
+    The same Material and Bootstrap remote variants can be reached as standalone
+    <br />
     clicking on dedicated secondary buttons. <br />
     <br />
     This short interactive animation should make it easier to grasp. <br />
     Hover/tap on remotes' logo to see a preview of their standalone deployment.
     <br />
     Then press Shell button to simulate internal routing to them.
-  </h2>
+  </h3>
   <div class="info-container" [class]="shellActive">
     <div class="rem-wrap rem-left">
+      <svg
+        class="link-path"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="M 100 0 L 50 95" pathLength="1" />
+      </svg>
       <span>shell/fe-mat</span>
       <div class="remote">
         <span>https://showroom-fe-mat.vercel.app/</span>
@@ -75,6 +85,14 @@
 
     <div class="shell-container">
       <div class="shell-wrap">
+        <svg
+          class="link-path"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path d="M 50 5 V 100" pathLength="1" />
+        </svg>
         <span>App Shell</span>
         <div class="shell" (click)="toggleShellActive()">
           <span>https://showroom-shell.vercel.app/</span>
@@ -83,9 +101,7 @@
             xmlns="http://www.w3.org/2000/svg"
             xmlns:cc="http://creativecommons.org/ns#"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
-            height="732.24"
             viewBox="0 0 800 732.2381"
-            width="800"
             version="1.1"
           >
             <g transform="matrix(1.7081 0 0 1.7081 -866.7 -12.337)">
@@ -117,6 +133,14 @@
     </div>
 
     <div class="rem-wrap rem-right">
+      <svg
+        class="link-path"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="M 0 0 L 50 95" pathLength="1" />
+      </svg>
       <span>shell/fe-bs</span>
       <div class="remote">
         <span>https://showroom-fe-bs.vercel.app/</span>

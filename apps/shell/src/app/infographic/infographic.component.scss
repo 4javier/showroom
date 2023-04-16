@@ -7,10 +7,11 @@
   justify-content: space-between;
   align-items: flex-start;
   width: 90vw;
-  margin-top: 3rem;
+  margin-top: 3vw;
   min-height: 75vw;
 }
 .shell-container {
+  display: flex;
   position: relative;
 }
 
@@ -19,6 +20,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 992px) {
+    gap: 0.5rem;
+  }
   gap: 1rem;
 }
 
@@ -26,14 +30,32 @@
   border: thin solid var(--sr-blue-light);
   border-radius: 10%;
 
+  @media (max-width: 992px) {
+    max-width: 10vw;
+    font-size: small;
+  }
+
   & > svg {
+    @media (max-width: 992px) {
+      width: 4vw;
+      height: 4vw;
+    }
     width: 10vw;
     height: 12vw;
   }
 }
 
 .shell {
+  @media (max-width: 992px) {
+    max-width: 10vw;
+    font-size: small;
+  }
+
   & > svg {
+    @media (max-width: 992px) {
+      width: 5vw;
+      height: 5vw;
+    }
     width: 12vw;
     height: 12vw;
   }
@@ -43,39 +65,17 @@
 .shell-wrap {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  @media (max-width: 992px) {
+    gap: 0;
+  }
   gap: 2rem;
   padding: 1rem;
-
-  & .preview {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 100%;
-    opacity: 0;
-    transition: opacity 1s;
-
-    & img {
-      width: 15vw;
-    }
-  }
-
-  &.rem-left .preview img {
-    content: url('/assets/preview-mat-standalone.webp');
-  }
-
-  &.rem-right .preview img {
-    content: url('/assets/preview-bs-standalone.webp');
-  }
 
   & > span {
     text-align: center;
     font-weight: bold;
-  }
-
-  & .remote {
-    padding: 1rem;
   }
 
   &:hover {
@@ -86,25 +86,50 @@
   }
 }
 
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity 1s;
+
+  & img {
+    width: 15vw;
+  }
+
+  &::after {
+    text-align: center;
+    content: 'Accessing directly the remote on its address will present it as a \
+    standalone app';
+  }
+}
+
+.rem-left .preview img {
+  content: url('/assets/preview-mat-standalone.webp');
+}
+
+.rem-right .preview img {
+  content: url('/assets/preview-bs-standalone.webp');
+}
+
+.remote {
+  padding: 1rem;
+  background-color: var(--sr-blue-light-300);
+}
+
 .rem-wrap {
   border: solid transparent;
+  border-radius: 10%;
   position: relative;
   & > span {
     opacity: 0;
     transition: opacity 1s;
   }
 
-  transition: box-shadow 1s;
-
-  & .preview {
-    margin-top: 1rem;
-
-    &::after {
-      text-align: center;
-      content: 'Accessing directly the remote on its address will present it as a \
-      standalone app';
-    }
-  }
+  transition: border 1s, background-color 1s;
 }
 
 .wp-logo {
@@ -113,9 +138,11 @@
   align-items: center;
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   opacity: 0;
   z-index: -1;
-  transform: translateY(0%);
+  transform: translateY(0);
   transition: transform 1s, opacity 0.5s, filter 0.3s;
   & img {
     width: 15vw;
@@ -138,14 +165,29 @@
   }
 }
 
+.link-path {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 8vw;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
 .--shell-active {
   & .shell-wrap {
     box-shadow: 0 0 0.1rem;
     transition: box-shadow 0.3s, filter 0.3s;
+
+    & .link-path {
+      top: 100%;
+      stroke: var(--sr-orange-light);
+      animation: dash 0.5s 1s linear forwards;
+    }
   }
 
   & .wp-logo {
-    transform: translateY(125%);
+    transform: translateY(25vw);
     filter: brightness(1.2);
     opacity: 1;
     transition: transform 1s, opacity 0.5s, filter 0.5s 1s;
@@ -153,8 +195,9 @@
 
   & .rem-wrap {
     border: solid var(--sr-orange-light);
+    background-color: var(--sr-orange-light-300);
     border-radius: 10%;
-    transition: border 0.5s 2.5s;
+    transition: border 0.5s 2.5s, background-color 0.5s 2.5s;
 
     &.rem-left {
       animation: move-left-remote-to-child 1s 1.5s forwards;
@@ -162,12 +205,27 @@
       & .preview img {
         content: url('/assets/preview-mat-remote.webp');
       }
+
+      & .link-path {
+        bottom: 100%;
+        left: 30%;
+        stroke: var(--sr-orange-light);
+        animation: dash 0.5s 2.5s linear forwards;
+      }
     }
+
     &.rem-right {
       animation: move-right-remote-to-child 1s 1.5s forwards;
 
       & .preview img {
         content: url('/assets/preview-bs-remote.webp');
+      }
+
+      & .link-path {
+        bottom: 100%;
+        left: -30%;
+        stroke: var(--sr-orange-light);
+        animation: dash 0.5s 2.5s linear forwards;
       }
     }
 
@@ -191,15 +249,28 @@
   }
 }
 
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  50% {
+    filter: none;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 0.1rem var(--sr-orange-light));
+  }
+}
+
 @keyframes move-left-remote-to-child {
   0% {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(0, 200%);
+    transform: translate(0, 50vw);
   }
   100% {
-    transform: translate(50%, 200%);
+    transform: translate(15vw, 50vw);
   }
 }
 
@@ -208,19 +279,19 @@
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(0, 200%);
+    transform: translate(0, 50vw);
   }
   100% {
-    transform: translate(-50%, 200%);
+    transform: translate(-15vw, 50vw);
   }
 }
 
 @keyframes move-left-remote-back {
   0% {
-    transform: translate(50%, 200%);
+    transform: translate(15vw, 50vw);
   }
   50% {
-    transform: translate(0, 200%);
+    transform: translate(0, 50vw);
   }
   100% {
     transform: translate(0, 0);
@@ -229,10 +300,10 @@
 
 @keyframes move-right-remote-back {
   0% {
-    transform: translate(-50%, 200%);
+    transform: translate(-15vw, 50vw);
   }
   50% {
-    transform: translate(0, 200%);
+    transform: translate(0, 50vw);
   }
   100% {
     transform: translate(0, 0);
