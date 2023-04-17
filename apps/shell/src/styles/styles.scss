@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
 @import 'sr-palette';
 
+html {
+  font-size: 16px;
+}
+
 html,
 body,
 div,
@@ -16,7 +20,6 @@ a {
   margin: 0;
   padding: 0;
   border: 0;
-  //	font-size: 16px;
   vertical-align: baseline;
 }
 
